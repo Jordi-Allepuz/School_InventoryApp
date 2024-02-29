@@ -45,7 +45,7 @@ fun DropDownMenuClases(
     // Estado para controlar si el menú desplegable está expandido o no.
     var expanded by remember { mutableStateOf(false) }
     var enable by remember { mutableStateOf(false) }
-    // Lista de géneros literarios disponibles para seleccionar.
+    // Lista de cursos que hay en el centro educativo.
     val clases = listaClases()
 
     Column(verticalArrangement = Arrangement.SpaceBetween) {
@@ -62,7 +62,7 @@ fun DropDownMenuClases(
                     password2,
                 )
             },
-            label = { Text(text = "Selecciona una curso", color = Color.White) },
+            label = { Text(text = "Selecciona una curso", color = Color.Black) },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Rounded.School,
@@ -88,7 +88,7 @@ fun DropDownMenuClases(
             onDismissRequest = { expanded = false },
             modifier = Modifier
                 .size(300.dp)
-                .fillMaxHeight().background(Color(0xFF99E2B4))
+                .fillMaxHeight()
         ) {
             clases.forEach { curso ->
                 DropdownMenuItem(onClick = {
@@ -103,7 +103,7 @@ fun DropDownMenuClases(
                     expanded = false
                 }, text = {
                     Text(text = curso)
-                }, colors = MenuDefaults.itemColors(textColor = Color.White))
+                }, colors = MenuDefaults.itemColors(textColor = Color.Black))
 
             }
         }

@@ -39,8 +39,8 @@ fun Email(
                 favoriteGenere
             )
         },
-        label = { Text(text = "Correo electronico", color = Color.White) },
-        colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.White),
+        label = { Text(text = "Correo electronico", color = Color.Black) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.Black),
         leadingIcon = {
             Icon(
                 imageVector = Icons.Rounded.Email,

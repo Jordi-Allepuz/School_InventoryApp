@@ -41,8 +41,8 @@ fun Centro(
                 favoriteGenere
             )
         },
-        label = { Text(text = "Centro Educativo", color = Color.White) },
-        colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.White),
+        label = { Text(text = "Centro Educativo", color = Color.Black) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.Black),
         leadingIcon = {
             Icon(
                 imageVector = Icons.Rounded.Apartment,

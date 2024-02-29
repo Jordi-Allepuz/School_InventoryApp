@@ -44,7 +44,7 @@ fun Password1(
                 favoriteGenere
             )
         },
-        label = { Text(text = "Contraseña", color = Color.White) },
+        label = { Text(text = "Contraseña", color = Color.Black) },
         trailingIcon = {
             val passwordImagen = if (passwordVisibility) {
                 Icons.Filled.VisibilityOff
@@ -65,8 +65,8 @@ fun Password1(
         } else {
             VisualTransformation.None
         },
-        supportingText = { Text(text = "Introduce contraseña", color = Color.White) },
-        colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.White),
+        supportingText = { Text(text = "Introduce contraseña", color = Color.Black) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.Black),
         singleLine = true
     )
 }
@@ -99,7 +99,7 @@ fun Password2(
                 favoriteGenere
             )
         },
-        label = { Text(text = "Contraseña", color = Color.White) },
+        label = { Text(text = "Contraseña", color = Color.Black) },
         trailingIcon = {
             val passwordImagen = if (passwordVisibility) {
                 Icons.Filled.VisibilityOff

@@ -38,8 +38,8 @@ fun Nombre(
                 favoriteGenere
             )
         },
-        label = { Text(text = "Nombre Usuario", color = Color.White) },
-        colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.White),
+        label = { Text(text = "Nombre Usuario", color = Color.Black) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.Black),
         leadingIcon = {
             Icon(
                 imageVector = Icons.Rounded.Person,
