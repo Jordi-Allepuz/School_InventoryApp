@@ -1,8 +1,9 @@
-package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup
+package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components
 
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Person2
+import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
@@ -11,13 +12,13 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Edad(
+fun Email(
     userName: String,
     age: String,
     email: String,
@@ -27,26 +28,28 @@ fun Edad(
     singUpViewModel: SignUpViewModel
 ) {
     OutlinedTextField(
-        value = age,
+        value = email,
         onValueChange = {
             singUpViewModel.onLoginChange(
-                email,
+                it,
                 userName,
                 password1,
                 password2,
-                it,
+                age,
                 favoriteGenere
             )
         },
-        label = { Text(text = "Edad", color = Color.White) },
+        label = { Text(text = "Correo electronico", color = Color.White) },
         colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.White),
         leadingIcon = {
             Icon(
-                imageVector = Icons.Rounded.Person2,
-                contentDescription = "edad"
+                imageVector = Icons.Rounded.Email,
+                contentDescription = "email"
             )
         },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
         modifier = Modifier.size(300.dp, 60.dp),
         singleLine = true
+
     )
 }

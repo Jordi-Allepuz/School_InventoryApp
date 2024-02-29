@@ -31,7 +31,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.school_inventoryapp.Routes
+import com.example.school_inventoryapp.schoolinventoryapp.ui.components.DropDownMenuClases
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.ProgressIndicatorLogo
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Centro
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Email
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Nombre
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Password1
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Password2
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,10 +50,10 @@ fun SignUpScreen(
 
     val email: String by signUpViewModel.email.observeAsState(initial = "")
     val userName: String by signUpViewModel.userName.observeAsState(initial = "")
-    val age: String by signUpViewModel.age.observeAsState(initial = "")
     val password1: String by signUpViewModel.password1.observeAsState(initial = "")
     val password2: String by signUpViewModel.password2.observeAsState(initial = "")
-    val curso: String by signUpViewModel.curso.observeAsState(initial = "")
+    val clase: String by signUpViewModel.clase.observeAsState(initial = "")
+    val centro: String by signUpViewModel.centro.observeAsState(initial = "")
     val isSignUpEnable: Boolean by signUpViewModel.isSignUpEnable.observeAsState(initial = false)
 
 
@@ -56,12 +62,12 @@ fun SignUpScreen(
         content = { paddingValues ->
             ContentNewUSer(
                 signUpViewModel,
-                email,
                 userName,
-                age,
+                email,
+                clase,
+                centro,
                 password1,
                 password2,
-                curso,
                 paddingValues,
             )
         },
@@ -70,11 +76,11 @@ fun SignUpScreen(
             FabNewUser(
                 navController,
                 signUpViewModel,
-                email,
                 userName,
-                age,
+                email,
+                clase,
+                centro,
                 password1,
-                curso,
                 isSignUpEnable
             )
         },
@@ -87,11 +93,11 @@ fun SignUpScreen(
 fun FabNewUser(
     navController: NavHostController,
     singUpViewModel: SignUpViewModel,
-    email: String,
     userName: String,
-    age: String,
+    email: String,
+    clase:String,
+    centro: String,
     password1: String,
-    favoriteGenere: String,
     isSignUpEnable: Boolean,
 ) {
     val contentToast = LocalContext.current.applicationContext
@@ -104,10 +110,10 @@ fun FabNewUser(
                     Toast.LENGTH_LONG
                 ).show()
                 singUpViewModel.registerUser(
-                    userName,
-                    email,
-                    age,
-                    favoriteGenere
+                       userName,
+                        email,
+                        clase,
+                        centro
                 )
                 singUpViewModel.signUp(
                     email,
@@ -130,12 +136,12 @@ fun FabNewUser(
 @Composable
 fun ContentNewUSer(
     singUpViewModel: SignUpViewModel,
-    email: String,
     userName: String,
-    age: String,
+    email: String,
+    clase: String,
+    centro: String,
     password1: String,
     password2: String,
-    favoriteGenere: String,
     paddingValues: PaddingValues,
 ) {
 
@@ -144,7 +150,7 @@ fun ContentNewUSer(
     val isLoading: Boolean by singUpViewModel.isLoading.observeAsState(false)
 
     LaunchedEffect(Unit) {
-        singUpViewModel.getPhotos()
+        singUpViewModel.getAvatars()
     }
 
 
@@ -172,36 +178,45 @@ fun ContentNewUSer(
             ) {
                 Nombre(
                     userName,
-                    age,
                     email,
-                    favoriteGenere,
-                    password1,
-                    password2,
-                    singUpViewModel
-                )
-                Edad(
-                    userName,
-                    age,
-                    email,
-                    favoriteGenere,
+                    clase,
+                    centro,
                     password1,
                     password2,
                     singUpViewModel
                 )
                 Email(
                     userName,
-                    age,
                     email,
-                    favoriteGenere,
+                    clase,
+                    centro,
+                    password1,
+                    password2,
+                    singUpViewModel
+                )
+                DropDownMenuClases(
+                    userName,
+                    email,
+                    clase,
+                    centro,
+                    password1,
+                    password2,
+                    singUpViewModel
+                )
+                Centro(
+                    userName,
+                    email,
+                    clase,
+                    centro,
                     password1,
                     password2,
                     singUpViewModel
                 )
                 Password1(
                     userName,
-                    age,
                     email,
-                    favoriteGenere,
+                    clase,
+                    centro,
                     password1,
                     password2,
                     singUpViewModel,
@@ -210,23 +225,14 @@ fun ContentNewUSer(
                 )
                 Password2(
                     userName,
-                    age,
                     email,
-                    favoriteGenere,
+                    clase,
+                    centro,
                     password1,
                     password2,
                     singUpViewModel,
                     passwordVisibility,
                     setPasswordVisibility = { passwordVisibility = it }
-                )
-                DropDownMenuGenere(
-                    singUpViewModel,
-                    email,
-                    userName,
-                    age,
-                    password1,
-                    password2,
-                    favoriteGenere
                 )
             }
         }

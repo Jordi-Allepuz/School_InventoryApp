@@ -1,6 +1,5 @@
 package com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels
 
-import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,7 +17,10 @@ import kotlin.random.Random
 
 
 @HiltViewModel
-class SignUpViewModel @Inject constructor(private val authService: AuthService, private val storageService: StorageService) : ViewModel() {
+class SignUpViewModel @Inject constructor(
+    private val authService: AuthService,
+    private val storageService: StorageService
+) : ViewModel() {
 
 
     private val _email = MutableLiveData<String>()
@@ -33,11 +35,14 @@ class SignUpViewModel @Inject constructor(private val authService: AuthService, 
     private val _password2 = MutableLiveData<String>()
     val password2: LiveData<String> = _password2
 
-    private val _age = MutableLiveData<String>()
-    val age: LiveData<String> = _age
+    private val _clase = MutableLiveData<String>()
+    val clase: LiveData<String> = _clase
 
-    private val _curso = MutableLiveData<String>()
-    val curso: LiveData<String> = _curso
+    private val _centro = MutableLiveData<String>()
+    val centro: LiveData<String> = _centro
+
+    private val _avatar = MutableLiveData<MutableList<String>>()
+    val avatar: LiveData<MutableList<String>> = _avatar
 
     private val _isSignUpEnable = MutableLiveData<Boolean>()
     val isSignUpEnable: LiveData<Boolean> = _isSignUpEnable
@@ -45,26 +50,23 @@ class SignUpViewModel @Inject constructor(private val authService: AuthService, 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private val _photos = MutableLiveData<MutableList<String>>()
-    val photos: LiveData<MutableList<String>> = _photos
-
-
 
     // Actualiza los LiveData con los valores ingresados y valida si el formulario está listo para enviar.
     fun onLoginChange(
-        email: String,
         userName: String,
+        email: String,
+        clase: String,
+        centro: String,
         password1: String,
         password2: String,
-        age: String,
-        favoriteGenere: String
-    ) {
-        _email.value = email
+
+        ) {
         _userName.value = userName
+        _email.value = email
+        _clase.value = clase
+        _centro.value = centro
         _password1.value = password1
         _password2.value = password2
-        _age.value = age
-        _curso.value = favoriteGenere
         _isSignUpEnable.value = enableSignUp(email, password1, password2)
     }
 
@@ -107,24 +109,35 @@ class SignUpViewModel @Inject constructor(private val authService: AuthService, 
     fun registerUser(
         userName: String,
         email: String,
-        age: String,
-        favoriteGenere: String
+        clase: String,
+        centro: String
     ) {
         viewModelScope.launch {
             _isLoading.value = true
             val result = withContext(Dispatchers.IO) {
-                val randomPhoto = Random.nextInt(0, _photos.value!!.size)
-                val photo: String = _photos.value!![randomPhoto]
-                storageService.registredUserData(User(userName, age, email, favoriteGenere, photo))
-                Log.i("FOTO", photo)
+                val randomPhoto = Random.nextInt(0, _avatar.value!!.size)
+                val avatar: String = _avatar.value!![randomPhoto]
+
+                val idNueva = storageService.getLastId() + 1
+
+                storageService.registredUserData(
+                    User(
+                        idNueva,
+                        userName,
+                        email,
+                        clase,
+                        centro,
+                        avatar
+                    )
+                )
             }
             if (result != null) {
                 _userName.value = ""
                 _email.value = ""
-                _age.value = ""
+                _clase.value = ""
+                _centro.value = ""
                 _password1.value = ""
                 _password2.value = ""
-                _curso.value = ""
                 //
             } else {
                 //error
@@ -134,19 +147,20 @@ class SignUpViewModel @Inject constructor(private val authService: AuthService, 
     }
 
     // Obtiene las fotos disponibles para el usuario desde Firebase Storage.
-    fun getPhotos() {
+    fun getAvatars() {
         viewModelScope.launch {
             _isLoading.value = true
             val result = withContext(Dispatchers.IO) {
-                storageService.getAllPhotos()
+                storageService.getAvatars()
             }
             if (result != null) {
-                _photos.value = result
+                _avatar.value = result
             } else {
                 //
             }
             _isLoading.value = false
         }
     }
+
 
 }

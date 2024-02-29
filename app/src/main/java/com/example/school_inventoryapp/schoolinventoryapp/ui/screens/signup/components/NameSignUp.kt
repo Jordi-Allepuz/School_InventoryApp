@@ -1,4 +1,4 @@
-package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup
+package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons

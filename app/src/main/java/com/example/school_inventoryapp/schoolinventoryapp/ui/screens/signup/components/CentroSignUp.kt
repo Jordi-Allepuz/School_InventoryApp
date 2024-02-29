@@ -1,9 +1,11 @@
-package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup
+package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Apartment
 import androidx.compose.material.icons.rounded.Email
+import androidx.compose.material.icons.rounded.School
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
@@ -18,7 +20,7 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Email(
+fun Centro(
     userName: String,
     age: String,
     email: String,
@@ -39,12 +41,12 @@ fun Email(
                 favoriteGenere
             )
         },
-        label = { Text(text = "Correo electronico", color = Color.White) },
+        label = { Text(text = "Centro Educativo", color = Color.White) },
         colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.White),
         leadingIcon = {
             Icon(
-                imageVector = Icons.Rounded.Email,
-                contentDescription = "email"
+                imageVector = Icons.Rounded.Apartment,
+                contentDescription = "centro"
             )
         },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
