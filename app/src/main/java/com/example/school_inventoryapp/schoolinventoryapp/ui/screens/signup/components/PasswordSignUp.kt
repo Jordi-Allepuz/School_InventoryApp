@@ -23,9 +23,9 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 @Composable
 fun Password1(
     userName: String,
-    age: String,
     email: String,
-    favoriteGenere: String,
+    clase:String,
+    curso:String,
     password1: String,
     password2: String,
     singUpViewModel: SignUpViewModel,
@@ -36,12 +36,12 @@ fun Password1(
         value = password1,
         onValueChange = {
             singUpViewModel.onLoginChange(
-                email,
                 userName,
+                email,
+                clase,
+                curso,
                 it,
-                password2,
-                age,
-                favoriteGenere
+                password2
             )
         },
         label = { Text(text = "Contraseña", color = Color.Black) },
@@ -78,9 +78,9 @@ fun Password1(
 @Composable
 fun Password2(
     userName: String,
-    age: String,
     email: String,
-    favoriteGenere: String,
+    clase:String,
+    curso:String,
     password1: String,
     password2: String,
     singUpViewModel: SignUpViewModel,
@@ -91,12 +91,12 @@ fun Password2(
         value = password2,
         onValueChange = {
             singUpViewModel.onLoginChange(
-                email,
                 userName,
+                email,
+                clase,
+                curso,
                 password1,
-                it,
-                age,
-                favoriteGenere
+                it
             )
         },
         label = { Text(text = "Contraseña", color = Color.Black) },
@@ -120,8 +120,8 @@ fun Password2(
         } else {
             VisualTransformation.None
         },
-        supportingText = { Text(text = "Confirmar contraseña", color = Color.White) },
-        colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.White),
+        supportingText = { Text(text = "Confirmar contraseña", color = Color.Black) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.Black),
         singleLine = true
     )
 }

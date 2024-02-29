@@ -120,7 +120,7 @@ class SignUpViewModel @Inject constructor(
 
                 val idNueva = storageService.getLastId() + 1
 
-                storageService.registredUserData(
+                storageService.createNewUser(
                     User(
                         idNueva,
                         userName,
@@ -145,6 +145,8 @@ class SignUpViewModel @Inject constructor(
             _isLoading.value = false
         }
     }
+
+
 
     // Obtiene las fotos disponibles para el usuario desde Firebase Storage.
     fun getAvatars() {

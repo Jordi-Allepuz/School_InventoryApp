@@ -78,7 +78,7 @@ fun DropDownMenuClases(
                 },
             singleLine = true,
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                disabledTextColor = Color.White,
+                disabledTextColor = Color.Black,
                 disabledBorderColor = MaterialTheme.colorScheme.outline,
                 disabledLeadingIconColor = MaterialTheme.colorScheme.outline
             )
@@ -90,7 +90,7 @@ fun DropDownMenuClases(
                 .size(300.dp)
                 .fillMaxHeight()
         ) {
-            clases.forEach { curso ->
+            clases.forEach { clase ->
                 DropdownMenuItem(onClick = {
                     singUpViewModel.onLoginChange(
                         userName,
@@ -102,7 +102,7 @@ fun DropDownMenuClases(
                     )
                     expanded = false
                 }, text = {
-                    Text(text = curso)
+                    Text(text = clase)
                 }, colors = MenuDefaults.itemColors(textColor = Color.Black))
 
             }

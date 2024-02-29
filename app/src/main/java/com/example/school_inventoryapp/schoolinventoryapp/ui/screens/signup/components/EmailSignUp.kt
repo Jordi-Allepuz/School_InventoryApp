@@ -20,9 +20,9 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 @Composable
 fun Email(
     userName: String,
-    age: String,
     email: String,
-    favoriteGenere: String,
+    clase:String,
+    curso:String,
     password1: String,
     password2: String,
     singUpViewModel: SignUpViewModel
@@ -31,12 +31,12 @@ fun Email(
         value = email,
         onValueChange = {
             singUpViewModel.onLoginChange(
-                it,
                 userName,
+                it,
+                clase,
+                curso,
                 password1,
                 password2,
-                age,
-                favoriteGenere
             )
         },
         label = { Text(text = "Correo electronico", color = Color.Black) },

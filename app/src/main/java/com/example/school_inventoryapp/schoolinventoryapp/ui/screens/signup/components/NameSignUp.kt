@@ -19,9 +19,9 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 @Composable
 fun Nombre(
     userName: String,
-    age: String,
     email: String,
-    favoriteGenere: String,
+    clase:String,
+    curso:String,
     password1: String,
     password2: String,
     singUpViewModel: SignUpViewModel
@@ -30,12 +30,12 @@ fun Nombre(
         value = userName,
         onValueChange = {
             singUpViewModel.onLoginChange(
-                email,
                 it,
+                email,
+                clase,
+                curso,
                 password1,
                 password2,
-                age,
-                favoriteGenere
             )
         },
         label = { Text(text = "Nombre Usuario", color = Color.Black) },

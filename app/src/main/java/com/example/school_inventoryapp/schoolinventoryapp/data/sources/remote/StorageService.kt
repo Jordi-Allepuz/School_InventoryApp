@@ -14,7 +14,7 @@ class StorageService @Inject constructor(
 
 
     // Registra los datos de un usuario en Firestore
-    suspend fun registredUserData(user: User): Boolean {
+    suspend fun createNewUser(user: User): Boolean {
         val usuarioMap = userToMap(user)
         return firebaseFirestore.collection("usuarios").add(usuarioMap).isComplete
     }

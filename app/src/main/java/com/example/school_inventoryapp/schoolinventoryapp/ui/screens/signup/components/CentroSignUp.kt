@@ -22,23 +22,23 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 @Composable
 fun Centro(
     userName: String,
-    age: String,
     email: String,
-    favoriteGenere: String,
+    clase:String,
+    curso:String,
     password1: String,
     password2: String,
     singUpViewModel: SignUpViewModel
 ) {
     OutlinedTextField(
-        value = email,
+        value = curso,
         onValueChange = {
             singUpViewModel.onLoginChange(
-                it,
                 userName,
+                email,
+                clase,
+                it,
                 password1,
                 password2,
-                age,
-                favoriteGenere
             )
         },
         label = { Text(text = "Centro Educativo", color = Color.Black) },
