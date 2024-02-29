@@ -8,6 +8,7 @@ fun userToMap(user: User): MutableMap<String, Any?> {
         "nombre" to user.nombre,
         "email" to user.email,
         "clase" to user.clase,
-        "centro" to user.centro
+        "centro" to user.centro,
+        "avatar" to user.avatar
     )
 }

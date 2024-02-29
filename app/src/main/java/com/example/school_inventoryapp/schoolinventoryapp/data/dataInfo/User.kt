@@ -5,5 +5,6 @@ data class User(
     val nombre: String,
     val email: String,
     val clase:String,
-    val centro:String
+    val centro:String,
+    val avatar: String
 )
