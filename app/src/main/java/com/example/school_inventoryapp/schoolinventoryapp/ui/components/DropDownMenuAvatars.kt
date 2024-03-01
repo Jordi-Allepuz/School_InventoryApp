@@ -1,14 +1,16 @@
 package com.example.school_inventoryapp.schoolinventoryapp.ui.components
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Face
 import androidx.compose.material.icons.rounded.School
-import androidx.compose.material.icons.rounded.SwipeDown
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -20,24 +22,29 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
 import com.example.school_inventoryapp.schoolinventoryapp.ui.data.listaClases
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
-
+import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.UserInfoViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DropDownMenuClases(
+fun DropDownMenuAvatars(
     userName: String,
     email: String,
     avatar: String,
-    clase:String,
-    centro:String,
+    clase: String,
+    centro: String,
     password1: String,
     password2: String,
     singUpViewModel: SignUpViewModel
@@ -47,28 +54,28 @@ fun DropDownMenuClases(
     var expanded by remember { mutableStateOf(false) }
     var enable by remember { mutableStateOf(false) }
     // Lista de cursos que hay en el centro educativo.
-    val clases = listaClases()
+    val avatars: List<String> by singUpViewModel.avatars.observeAsState(initial = listOf())
 
     Column(verticalArrangement = Arrangement.SpaceBetween) {
         OutlinedTextField(
-            value = clase,
+            value = avatar,
             enabled = enable,
             onValueChange = {
                 singUpViewModel.onLoginChange(
                     userName,
                     email,
-                    avatar,
                     it,
+                    clase,
                     centro,
                     password1,
                     password2,
                 )
             },
-            label = { Text(text = "Selecciona una curso", color = Color.Black) },
+            label = { Text(text = "Selecciona un avatar", color = Color.Black) },
             leadingIcon = {
                 Icon(
-                    imageVector = Icons.Rounded.School,
-                    contentDescription = "clase"
+                    imageVector = Icons.Rounded.Face,
+                    contentDescription = "avatar"
                 )
             },
             readOnly = true,
@@ -92,7 +99,7 @@ fun DropDownMenuClases(
                 .size(300.dp)
                 .fillMaxHeight()
         ) {
-            clases.forEach { clase ->
+            avatars.forEach { avatar ->
                 DropdownMenuItem(onClick = {
                     singUpViewModel.onLoginChange(
                         userName,
@@ -104,9 +111,15 @@ fun DropDownMenuClases(
                         password2,
                     )
                     expanded = false
-                }, text = {
-                    Text(text = clase)
-                }, colors = MenuDefaults.itemColors(textColor = Color.Black))
+                },
+                    text = {
+                        Column (modifier=Modifier.fillMaxWidth() ,horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center){
+                            Image(
+                                painter = rememberImagePainter(data = avatar),
+                                contentDescription = null,
+                                modifier = Modifier.size(60.dp).padding(vertical = 2.dp))
+                        }
+                    })
 
             }
         }

@@ -31,6 +31,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.school_inventoryapp.Routes
+import com.example.school_inventoryapp.schoolinventoryapp.ui.components.DropDownMenuAvatars
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.DropDownMenuClases
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.ProgressIndicatorLogo
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Centro
@@ -50,6 +51,7 @@ fun SignUpScreen(
 
     val email: String by signUpViewModel.email.observeAsState(initial = "")
     val userName: String by signUpViewModel.userName.observeAsState(initial = "")
+    val avatar: String by signUpViewModel.avatar.observeAsState(initial = "")
     val password1: String by signUpViewModel.password1.observeAsState(initial = "")
     val password2: String by signUpViewModel.password2.observeAsState(initial = "")
     val clase: String by signUpViewModel.clase.observeAsState(initial = "")
@@ -64,6 +66,7 @@ fun SignUpScreen(
                 signUpViewModel,
                 userName,
                 email,
+                avatar,
                 clase,
                 centro,
                 password1,
@@ -78,6 +81,7 @@ fun SignUpScreen(
                 signUpViewModel,
                 userName,
                 email,
+                avatar,
                 clase,
                 centro,
                 password1,
@@ -95,7 +99,8 @@ fun FabNewUser(
     singUpViewModel: SignUpViewModel,
     userName: String,
     email: String,
-    clase:String,
+    avatar: String,
+    clase: String,
     centro: String,
     password1: String,
     isSignUpEnable: Boolean,
@@ -110,10 +115,11 @@ fun FabNewUser(
                     Toast.LENGTH_LONG
                 ).show()
                 singUpViewModel.registerUser(
-                       userName,
-                        email,
-                        clase,
-                        centro
+                    userName,
+                    email,
+                    avatar,
+                    clase,
+                    centro
                 )
                 singUpViewModel.signUp(
                     email,
@@ -138,6 +144,7 @@ fun ContentNewUSer(
     singUpViewModel: SignUpViewModel,
     userName: String,
     email: String,
+    avatar: String,
     clase: String,
     centro: String,
     password1: String,
@@ -179,6 +186,7 @@ fun ContentNewUSer(
                 Nombre(
                     userName,
                     email,
+                    avatar,
                     clase,
                     centro,
                     password1,
@@ -188,6 +196,17 @@ fun ContentNewUSer(
                 Email(
                     userName,
                     email,
+                    avatar,
+                    clase,
+                    centro,
+                    password1,
+                    password2,
+                    singUpViewModel
+                )
+                DropDownMenuAvatars(
+                    userName,
+                    email,
+                    avatar,
                     clase,
                     centro,
                     password1,
@@ -197,6 +216,7 @@ fun ContentNewUSer(
                 DropDownMenuClases(
                     userName,
                     email,
+                    avatar,
                     clase,
                     centro,
                     password1,
@@ -206,6 +226,7 @@ fun ContentNewUSer(
                 Centro(
                     userName,
                     email,
+                    avatar,
                     clase,
                     centro,
                     password1,
@@ -215,6 +236,7 @@ fun ContentNewUSer(
                 Password1(
                     userName,
                     email,
+                    avatar,
                     clase,
                     centro,
                     password1,
@@ -226,6 +248,7 @@ fun ContentNewUSer(
                 Password2(
                     userName,
                     email,
+                    avatar,
                     clase,
                     centro,
                     password1,

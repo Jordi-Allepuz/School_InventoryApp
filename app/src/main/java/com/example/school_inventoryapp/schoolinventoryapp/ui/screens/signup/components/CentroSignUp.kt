@@ -23,6 +23,7 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 fun Centro(
     userName: String,
     email: String,
+    avatar:String,
     clase:String,
     curso:String,
     password1: String,
@@ -35,6 +36,7 @@ fun Centro(
             singUpViewModel.onLoginChange(
                 userName,
                 email,
+                avatar,
                 clase,
                 it,
                 password1,

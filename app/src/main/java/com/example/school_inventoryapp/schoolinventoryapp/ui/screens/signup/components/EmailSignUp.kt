@@ -21,6 +21,7 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 fun Email(
     userName: String,
     email: String,
+    avatar:String,
     clase:String,
     curso:String,
     password1: String,
@@ -33,6 +34,7 @@ fun Email(
             singUpViewModel.onLoginChange(
                 userName,
                 it,
+                avatar,
                 clase,
                 curso,
                 password1,

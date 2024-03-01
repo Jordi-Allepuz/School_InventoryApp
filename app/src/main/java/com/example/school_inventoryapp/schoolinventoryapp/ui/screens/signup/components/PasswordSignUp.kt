@@ -24,6 +24,7 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 fun Password1(
     userName: String,
     email: String,
+    avatar:String,
     clase:String,
     curso:String,
     password1: String,
@@ -38,6 +39,7 @@ fun Password1(
             singUpViewModel.onLoginChange(
                 userName,
                 email,
+                avatar,
                 clase,
                 curso,
                 it,
@@ -79,6 +81,7 @@ fun Password1(
 fun Password2(
     userName: String,
     email: String,
+    avatar:String,
     clase:String,
     curso:String,
     password1: String,
@@ -93,6 +96,7 @@ fun Password2(
             singUpViewModel.onLoginChange(
                 userName,
                 email,
+                avatar,
                 clase,
                 curso,
                 password1,

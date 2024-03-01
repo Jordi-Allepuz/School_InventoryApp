@@ -20,6 +20,7 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 fun Nombre(
     userName: String,
     email: String,
+    avatar:String,
     clase:String,
     curso:String,
     password1: String,
@@ -32,6 +33,7 @@ fun Nombre(
             singUpViewModel.onLoginChange(
                 it,
                 email,
+                avatar,
                 clase,
                 curso,
                 password1,

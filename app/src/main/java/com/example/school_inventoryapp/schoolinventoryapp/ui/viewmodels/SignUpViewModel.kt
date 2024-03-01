@@ -1,6 +1,5 @@
 package com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels
 
-import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -42,8 +41,12 @@ class SignUpViewModel @Inject constructor(
     private val _centro = MutableLiveData<String>()
     val centro: LiveData<String> = _centro
 
-    private val _avatar = MutableLiveData<MutableList<String>>()
-    val avatar: LiveData<MutableList<String>> = _avatar
+    private val _avatar = MutableLiveData<String>()
+    val avatar: LiveData<String> = _avatar
+
+    private val _avatars = MutableLiveData<MutableList<String>>()
+    val avatars: LiveData<MutableList<String>> = _avatars
+
 
     private val _isSignUpEnable = MutableLiveData<Boolean>()
     val isSignUpEnable: LiveData<Boolean> = _isSignUpEnable
@@ -56,6 +59,7 @@ class SignUpViewModel @Inject constructor(
     fun onLoginChange(
         userName: String,
         email: String,
+        avatar:String,
         clase: String,
         centro: String,
         password1: String,
@@ -64,6 +68,7 @@ class SignUpViewModel @Inject constructor(
         ) {
         _userName.value = userName
         _email.value = email
+        _avatar.value = avatar
         _clase.value = clase
         _centro.value = centro
         _password1.value = password1
@@ -110,15 +115,16 @@ class SignUpViewModel @Inject constructor(
     fun registerUser(
         userName: String,
         email: String,
+        avatar: String,
         clase: String,
         centro: String
     ) {
         viewModelScope.launch {
             _isLoading.value = true
             val result = withContext(Dispatchers.IO) {
-                val randomPhoto = Random.nextInt(0, _avatar.value!!.size)
-                val avatar: String = _avatar.value!![randomPhoto]
-
+//                val randomPhoto = Random.nextInt(0, _avatars.value!!.size)
+//                val avatar: String = _avatars.value!![randomPhoto]
+//
 
                 storageService.createNewUser(
                     User(
@@ -155,7 +161,7 @@ class SignUpViewModel @Inject constructor(
                 storageService.getAvatars()
             }
             if (result != null) {
-                _avatar.value = result
+                _avatars.value = result
             } else {
                 //
             }
