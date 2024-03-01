@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Face
 import androidx.compose.material.icons.rounded.School
+import androidx.compose.material3.Card
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -56,9 +57,17 @@ fun DropDownMenuAvatars(
     // Lista de cursos que hay en el centro educativo.
     val avatars: List<String> by singUpViewModel.avatars.observeAsState(initial = listOf())
 
-    Column(verticalArrangement = Arrangement.SpaceBetween) {
+    Column(verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.CenterHorizontally) {
+        Card() {
+            Image(
+                painter = rememberImagePainter(data = avatar),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(60.dp)
+                    .padding(vertical = 2.dp))
+        }
         OutlinedTextField(
-            value = avatar,
+            value = "",
             enabled = enable,
             onValueChange = {
                 singUpViewModel.onLoginChange(
@@ -117,7 +126,9 @@ fun DropDownMenuAvatars(
                             Image(
                                 painter = rememberImagePainter(data = avatar),
                                 contentDescription = null,
-                                modifier = Modifier.size(60.dp).padding(vertical = 2.dp))
+                                modifier = Modifier
+                                    .size(60.dp)
+                                    .padding(vertical = 2.dp))
                         }
                     })
 
