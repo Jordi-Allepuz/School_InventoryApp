@@ -4,7 +4,6 @@ import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.Material
 
 fun materialToMap(material: Material): MutableMap<String, Any?> {
     return mutableMapOf(
-        "id" to material.id,
         "nombre" to material.nombre,
         "cantidad" to material.cantidad,
         "curso" to material.curso,

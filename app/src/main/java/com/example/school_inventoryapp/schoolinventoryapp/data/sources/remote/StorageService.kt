@@ -3,6 +3,7 @@ package com.example.school_inventoryapp.schoolinventoryapp.data.sources.remote
 import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.User
 import com.example.school_inventoryapp.schoolinventoryapp.data.mappers.userToMap
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -17,6 +18,13 @@ class StorageService @Inject constructor(
     suspend fun createNewUser(user: User): Boolean {
         val usuarioMap = userToMap(user)
         return firebaseFirestore.collection("usuarios").add(usuarioMap).isComplete
+    }
+
+    // Obtiene la información de un usuario por su email y retorna un objeto User
+    suspend fun getInfoUser(email: String): User? {
+        val result =
+            firebaseFirestore.collection("usuarios").whereEqualTo("email", email).get().await()
+        return result.documents.firstOrNull()?.toObject<User>()
     }
 
 
@@ -48,6 +56,8 @@ class StorageService @Inject constructor(
             result.documents.first().getLong("id")!!
         }
     }
+
+
 
 
 }

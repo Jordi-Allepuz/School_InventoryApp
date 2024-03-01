@@ -1,5 +1,6 @@
 package com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels
 
+import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -118,11 +119,9 @@ class SignUpViewModel @Inject constructor(
                 val randomPhoto = Random.nextInt(0, _avatar.value!!.size)
                 val avatar: String = _avatar.value!![randomPhoto]
 
-                val idNueva = storageService.getLastId() + 1
 
                 storageService.createNewUser(
                     User(
-                        idNueva,
                         userName,
                         email,
                         clase,

@@ -1,11 +1,10 @@
 package com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo
 
 data class Material(
-    val id:Long,
-    val nombre: String,
-    val cantidad: Int,
-    val curso:String,
-    val asignatura: String,
-    val description: String,
-    val image: String
+    val nombre: String="",
+    val cantidad: Int=0,
+    val curso:String="",
+    val asignatura: String="",
+    val description: String="",
+    val image: String=""
 )
