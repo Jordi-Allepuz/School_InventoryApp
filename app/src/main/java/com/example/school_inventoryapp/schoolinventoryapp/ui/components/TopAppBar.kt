@@ -56,19 +56,19 @@ fun TopBar(
         },
         actions = {
             // Muestra un ícono con insignia si `badgedOn` es verdadero.
-//            if (badgedOn) BadgedBoxBook()
-//            IconButton(onClick = { userInfoViewModel.visitShop("https://www.abacus.com/") }) {
-//                Icon(imageVector = Icons.Rounded.ShoppingCart, contentDescription = "search")
-//            }
-//            // Ícono para abrir el menú desplegable.
-//            IconButton(onClick = { menuOpen = true }) {
-//                Icon(imageVector = Icons.Filled.MoreVert, contentDescription = "overflow")
-//                OverFlowMenu(
-//                    expanded = menuOpen,
-//                    onDismiss = { menuOpen = !menuOpen }, loginViewModel, navigationController
-//                )
-//
-//            }
+            if (badgedOn) BadgedBoxBook()
+            IconButton(onClick = { userInfoViewModel.visitShop("https://www.abacus.com/") }) {
+                Icon(imageVector = Icons.Rounded.ShoppingCart, contentDescription = "search")
+            }
+            // Ícono para abrir el menú desplegable.
+            IconButton(onClick = { menuOpen = true }) {
+                Icon(imageVector = Icons.Filled.MoreVert, contentDescription = "overflow")
+                OverFlowMenu(
+                    expanded = menuOpen,
+                    onDismiss = { menuOpen = !menuOpen }, loginViewModel, navigationController
+                )
+
+            }
         },
         colors = TopAppBarDefaults.largeTopAppBarColors(
             actionIconContentColor = Color.Black,
