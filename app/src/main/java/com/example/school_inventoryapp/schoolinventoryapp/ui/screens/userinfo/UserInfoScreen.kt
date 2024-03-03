@@ -71,7 +71,7 @@ fun UserInfoScreen(
                     userInfoViewModel,
                     openAppsViewModel,
                     navigationController,
-//                badgedOn = false
+                badgedOn = false
                 )
             },
             content = { paddingValues ->

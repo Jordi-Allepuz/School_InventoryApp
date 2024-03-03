@@ -59,7 +59,7 @@ fun ContentAppInfoScreen() {
                 )
                 Divider(thickness = 4.dp)
                 Text(
-                    text = "Nombre App: My Book Controller",
+                    text = "Nombre App: School Inventory",
                     modifier = Modifier.padding(10.dp),
                     fontSize = 20.sp,
                     color = Color.Black

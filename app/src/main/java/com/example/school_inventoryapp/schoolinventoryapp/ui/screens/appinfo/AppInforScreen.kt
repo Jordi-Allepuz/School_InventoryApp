@@ -55,7 +55,7 @@ fun InfoAppScreen(
                     userInfoViewModel,
                     openAppsViewModel,
                     navigationController,
-//                    badgedOn = false,
+                    badgedOn = false,
                 )
             },
             bottomBar = { BottomBar(navigationController, loginViewModel) },

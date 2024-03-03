@@ -35,7 +35,7 @@ fun TopBar(
     userInfoViewModel: UserInfoViewModel,
     openAppsViewModel: OpenAppsViewModel,
     navigationController: NavHostController,
-//    badgedOn: Boolean
+    badgedOn: Boolean
 ) {
 // Estado para controlar la visibilidad del menú desplegable.
     var menuOpen by rememberSaveable { mutableStateOf(false) }
@@ -58,17 +58,17 @@ fun TopBar(
         },
         actions = {
             // Muestra un ícono con insignia si `badgedOn` es verdadero.
-//            if (badgedOn) BadgedBoxBook()
+            if (badgedOn) BadgedBox()
             IconButton(onClick = { openAppsViewModel.visitShop("https://www.abacus.coop/es/home") }) {
                 Icon(imageVector = Icons.Rounded.ShoppingCart, contentDescription = "search")
             }
             // Ícono para abrir el menú desplegable.
             IconButton(onClick = { menuOpen = true }) {
                 Icon(imageVector = Icons.Filled.MoreVert, contentDescription = "overflow")
-//                OverFlowMenu(
-//                    expanded = menuOpen,
-//                    onDismiss = { menuOpen = !menuOpen }, loginViewModel, navigationController
-//                )
+                OverFlowMenu(
+                    expanded = menuOpen,
+                    onDismiss = { menuOpen = !menuOpen }, loginViewModel, navigationController
+                )
 
             }
         },
