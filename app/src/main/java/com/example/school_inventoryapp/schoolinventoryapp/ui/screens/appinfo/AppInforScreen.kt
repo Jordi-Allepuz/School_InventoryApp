@@ -14,6 +14,7 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.components.ModalDra
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.TopBar
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.appinfo.components.ContentAppInfoScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.LoginViewModel
+import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.OpenAppsViewModel
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.UserInfoViewModel
 
 
@@ -23,6 +24,7 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.UserInfo
 fun InfoAppScreen(
     loginViewModel: LoginViewModel,
     userInfoViewModel: UserInfoViewModel,
+    openAppsViewModel: OpenAppsViewModel,
     navigationController: NavHostController
 ) {
 
@@ -36,6 +38,7 @@ fun InfoAppScreen(
                 estadoDrawer = estadoDrawer,
                 coroutina = coroutina,
                 userInfoViewModel,
+                openAppsViewModel,
                 navigationController
             )
         },
@@ -50,8 +53,9 @@ fun InfoAppScreen(
                     coroutina,
                     loginViewModel,
                     userInfoViewModel,
+                    openAppsViewModel,
                     navigationController,
-                    badgedOn = false,
+//                    badgedOn = false,
                 )
             },
             bottomBar = { BottomBar(navigationController, loginViewModel) },

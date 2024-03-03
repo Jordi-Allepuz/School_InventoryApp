@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.LoginViewModel
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.UserInfoViewModel
+import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.OpenAppsViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -32,8 +33,9 @@ fun TopBar(
     coroutina: CoroutineScope,// Scope de corutina para ejecutar acciones asíncronas.
     loginViewModel: LoginViewModel,
     userInfoViewModel: UserInfoViewModel,
+    openAppsViewModel: OpenAppsViewModel,
     navigationController: NavHostController,
-    badgedOn: Boolean
+//    badgedOn: Boolean
 ) {
 // Estado para controlar la visibilidad del menú desplegable.
     var menuOpen by rememberSaveable { mutableStateOf(false) }
@@ -56,17 +58,17 @@ fun TopBar(
         },
         actions = {
             // Muestra un ícono con insignia si `badgedOn` es verdadero.
-            if (badgedOn) BadgedBoxBook()
-            IconButton(onClick = { userInfoViewModel.visitShop("https://www.abacus.com/") }) {
+//            if (badgedOn) BadgedBoxBook()
+            IconButton(onClick = { openAppsViewModel.visitShop("https://www.abacus.coop/es/home") }) {
                 Icon(imageVector = Icons.Rounded.ShoppingCart, contentDescription = "search")
             }
             // Ícono para abrir el menú desplegable.
             IconButton(onClick = { menuOpen = true }) {
                 Icon(imageVector = Icons.Filled.MoreVert, contentDescription = "overflow")
-                OverFlowMenu(
-                    expanded = menuOpen,
-                    onDismiss = { menuOpen = !menuOpen }, loginViewModel, navigationController
-                )
+//                OverFlowMenu(
+//                    expanded = menuOpen,
+//                    onDismiss = { menuOpen = !menuOpen }, loginViewModel, navigationController
+//                )
 
             }
         },

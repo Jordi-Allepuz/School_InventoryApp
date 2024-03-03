@@ -16,6 +16,7 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.login.Login
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.SignUpScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.userinfo.UserInfoScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.LoginViewModel
+import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.OpenAppsViewModel
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.UserInfoViewModel
 import com.example.school_inventoryapp.ui.theme.School_InventoryAppTheme
@@ -29,6 +30,7 @@ class MainActivity : ComponentActivity() {
     private val loginViewModel: LoginViewModel by viewModels()
     private val signUpViewModel: SignUpViewModel by viewModels()
     private val userInfoViewModel: UserInfoViewModel by viewModels()
+    private val openAppsViewModel: OpenAppsViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +54,7 @@ class MainActivity : ComponentActivity() {
                             SignUpScreen(signUpViewModel, navigationController)
                         }
                         composable(Routes.UserInfoScreen.route) {
-                            UserInfoScreen(userInfoViewModel, loginViewModel, navigationController)
+                            UserInfoScreen(userInfoViewModel, loginViewModel, openAppsViewModel, navigationController)
                         }
                         composable(Routes.MaterialInfoScreen.route) {
 
@@ -64,7 +66,7 @@ class MainActivity : ComponentActivity() {
 
                         }
                         composable(Routes.AppInfoScreen.route) {
-                            InfoAppScreen(loginViewModel, userInfoViewModel , navigationController)
+                            InfoAppScreen(loginViewModel, userInfoViewModel ,openAppsViewModel ,  navigationController)
                         }
                     }
                 }

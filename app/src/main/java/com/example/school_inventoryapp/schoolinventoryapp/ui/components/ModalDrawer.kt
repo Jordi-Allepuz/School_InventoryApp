@@ -38,6 +38,7 @@ import androidx.navigation.NavHostController
 import com.example.school_inventoryapp.R
 import com.example.school_inventoryapp.Routes
 import com.example.school_inventoryapp.schoolinventoryapp.ui.data.ModalDrawerComponent
+import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.OpenAppsViewModel
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.UserInfoViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -45,7 +46,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ModalDrawer(estadoDrawer: DrawerState, coroutina: CoroutineScope, userInfoViewModel: UserInfoViewModel, navigationController: NavHostController) {
+fun ModalDrawer(estadoDrawer: DrawerState, coroutina: CoroutineScope, userInfoViewModel: UserInfoViewModel,openAppsViewModel: OpenAppsViewModel , navigationController: NavHostController) {
 
     // Estado para rastrear el ítem seleccionado en el drawer.
     var itemSeleccionado by rememberSaveable { mutableStateOf(0) }
@@ -58,10 +59,10 @@ fun ModalDrawer(estadoDrawer: DrawerState, coroutina: CoroutineScope, userInfoVi
         )
     ) {
         Column {
-//            Image(
-//                painter = painterResource(id = R.drawable.drawableimage),
-//                contentDescription = "modalDrawerImage"
-//            )
+            Image(
+                painter = painterResource(id = R.drawable.drawerimage),
+                contentDescription = "modalDrawerImage"
+            )
             // Itera sobre la lista de opciones del drawer para crear los ítems navegables.
             listaDrawers.forEachIndexed { index, item ->
                 NavigationDrawerItem(
@@ -75,7 +76,7 @@ fun ModalDrawer(estadoDrawer: DrawerState, coroutina: CoroutineScope, userInfoVi
                     onClick = {
                         when(index){
                             0-> navigationController.navigate(Routes.AppInfoScreen.route)
-//                            1 -> userInfoViewModel.sendEmail("joralljan@alu.edu.gva.es")
+                            1 -> openAppsViewModel.sendEmail("joralljan@alu.edu.gva.es")
                         }
                         itemSeleccionado = index
                     },
