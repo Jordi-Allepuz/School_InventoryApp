@@ -31,6 +31,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.school_inventoryapp.Routes
+import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.User
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.DropDownMenuAvatars
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.DropDownMenuClases
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.ProgressIndicatorLogo
@@ -42,23 +43,22 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.comp
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Password1
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Password2
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
+import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.UserInfoViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun EditUserScreen(
     signUpViewModel: SignUpViewModel,
+    userInfoViewModel: UserInfoViewModel,
     navController: NavHostController,
 ) {
 
-    val email: String by signUpViewModel.email.observeAsState(initial = "")
-    val userName: String by signUpViewModel.userName.observeAsState(initial = "")
-    val avatar: String by signUpViewModel.avatar.observeAsState(initial = "")
+
     val password1: String by signUpViewModel.password1.observeAsState(initial = "")
     val password2: String by signUpViewModel.password2.observeAsState(initial = "")
-    val clase: String by signUpViewModel.clase.observeAsState(initial = "")
-    val centro: String by signUpViewModel.centro.observeAsState(initial = "")
-    val isSignUpEnable: Boolean by signUpViewModel.isSignUpEnable.observeAsState(initial = false)
+
+    val user: User? by userInfoViewModel.user.observeAsState()
 
 
     Scaffold(
@@ -66,11 +66,11 @@ fun EditUserScreen(
         content = { paddingValues ->
             ContentEditUser(
                 signUpViewModel,
-                userName,
-                email,
-                avatar,
-                clase,
-                centro,
+                user!!.nombre,
+                user!!.email,
+                user!!.avatar,
+                user!!.clase,
+                user!!.centro,
                 password1,
                 password2,
                 paddingValues,
@@ -81,13 +81,11 @@ fun EditUserScreen(
             FabEditUser(
                 navController,
                 signUpViewModel,
-                userName,
-                email,
-                avatar,
-                clase,
-                centro,
-                password1,
-                isSignUpEnable
+                user!!.nombre,
+                user!!.email,
+                user!!.avatar,
+                user!!.clase,
+                user!!.centro
             )
         },
         floatingActionButtonPosition = FabPosition.End,

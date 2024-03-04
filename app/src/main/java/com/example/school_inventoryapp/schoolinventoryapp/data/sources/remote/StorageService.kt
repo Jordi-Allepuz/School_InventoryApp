@@ -21,11 +21,23 @@ class StorageService @Inject constructor(
         return firebaseFirestore.collection("usuarios").add(usuarioMap).isComplete
     }
 
+    suspend fun editUser(user: User, id: String): Boolean {
+        val userMap = userToMap(user)
+        return firebaseFirestore.collection("usuarios").document(id).set(userMap).isComplete
+    }
+
     // Obtiene la información de un usuario por su email y retorna un objeto User
     suspend fun getInfoUser(email: String): User? {
         val result =
             firebaseFirestore.collection("usuarios").whereEqualTo("email", email).get().await()
         return result.documents.firstOrNull()?.toObject<User>()
+    }
+
+    // Obtiene el ID de un usuario por su email
+    suspend fun getUserId(email: String): String? {
+        val result =
+            firebaseFirestore.collection("usuarios").whereEqualTo("email", email).get().await()
+        return result.documents.firstOrNull()?.id
     }
 
 

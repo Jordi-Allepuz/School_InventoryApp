@@ -39,8 +39,6 @@ fun ContentEditUser(
     paddingValues: PaddingValues,
 ) {
 
-
-    var passwordVisibility by rememberSaveable { mutableStateOf(true) }
     val isLoading: Boolean by singUpViewModel.isLoading.observeAsState(false)
 
     LaunchedEffect(Unit) {

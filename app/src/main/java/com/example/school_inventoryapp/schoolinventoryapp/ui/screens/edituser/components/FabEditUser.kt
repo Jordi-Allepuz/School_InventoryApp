@@ -10,7 +10,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import com.example.school_inventoryapp.Routes
+import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.User
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
+import kotlin.math.sin
 
 @Composable
 fun FabEditUser(
@@ -20,36 +22,20 @@ fun FabEditUser(
     email: String,
     avatar: String,
     clase: String,
-    centro: String,
-    password1: String,
-    isSignUpEnable: Boolean,
+    centro: String
 ) {
     val contentToast = LocalContext.current.applicationContext
     FloatingActionButton(
         onClick = {
-            if (isSignUpEnable) {
-                Toast.makeText(
-                    contentToast,
-                    "REGISTRADO",
-                    Toast.LENGTH_LONG
-                ).show()
-                singUpViewModel.registerUser(
-                    userName,
-                    email,
-                    avatar,
-                    clase,
-                    centro
-                )
-                singUpViewModel.signUp(
-                    email,
-                    password1
-                ) { navController.navigate(Routes.UserInfoScreen.route) }
-            } else {
-                Toast.makeText(
-                    contentToast,
-                    "REVISA LOS CAMPOS",
-                    Toast.LENGTH_LONG
-                ).show()
+            Toast.makeText(
+                contentToast,
+                "EDITADO CORRECTAMENTE",
+                Toast.LENGTH_LONG
+            ).show()
+            singUpViewModel.updateUser(
+                User(userName, email, avatar, clase, centro), singUpViewModel.getCurrentId(email).toString()
+            ) {
+                navController.navigate(Routes.UserInfoScreen.route)
             }
         }, contentColor = Color.Black, containerColor = Color(0xFFe4bc7f)
     ) {
