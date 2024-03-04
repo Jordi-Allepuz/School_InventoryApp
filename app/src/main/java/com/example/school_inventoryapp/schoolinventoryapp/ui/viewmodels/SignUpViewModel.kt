@@ -47,7 +47,7 @@ class SignUpViewModel @Inject constructor(
     private val _avatars = MutableLiveData<MutableList<String>>()
     val avatars: LiveData<MutableList<String>> = _avatars
 
-    private val _currentId= MutableLiveData<String>()
+    private val _currentId = MutableLiveData<String>()
     val currentId: LiveData<String> = _currentId
 
 
@@ -62,7 +62,7 @@ class SignUpViewModel @Inject constructor(
     fun onLoginChange(
         userName: String,
         email: String,
-        avatar:String,
+        avatar: String,
         clase: String,
         centro: String,
         password1: String,
@@ -153,11 +153,17 @@ class SignUpViewModel @Inject constructor(
         }
     }
 
-    fun updateUser(user: User, id: String, toUserScreen: () -> Unit) {
+    fun updateUser(
+        userName: String,
+        email: String,
+        avatar: String,
+        clase: String,
+        centro: String, toUserScreen: () -> Unit
+    ) {
         viewModelScope.launch {
             _isLoading.value = true
-            val result= withContext(Dispatchers.IO) {
-                storageService.editUser(user, id)
+            val result = withContext(Dispatchers.IO) {
+                storageService.editUser(User(userName,email,clase,centro,avatar), email)
             }
             if (result != null) {
                 toUserScreen()
@@ -167,7 +173,6 @@ class SignUpViewModel @Inject constructor(
             _isLoading.value = false
         }
     }
-
 
 
     // Obtiene las fotos disponibles para el usuario desde Firebase Storage.

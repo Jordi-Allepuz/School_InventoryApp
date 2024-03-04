@@ -21,9 +21,9 @@ class StorageService @Inject constructor(
         return firebaseFirestore.collection("usuarios").add(usuarioMap).isComplete
     }
 
-    suspend fun editUser(user: User, id: String): Boolean {
+    suspend fun editUser(user: User, email: String): Boolean {
         val userMap = userToMap(user)
-        return firebaseFirestore.collection("usuarios").document(id).set(userMap).isComplete
+       return firebaseFirestore.collection("usuarios").whereEqualTo("email", email).get().await().documents.first().reference.set(userMap).isComplete
     }
 
     // Obtiene la información de un usuario por su email y retorna un objeto User

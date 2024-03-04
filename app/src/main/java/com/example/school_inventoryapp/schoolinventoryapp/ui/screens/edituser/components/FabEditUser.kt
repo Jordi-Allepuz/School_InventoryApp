@@ -33,7 +33,11 @@ fun FabEditUser(
                 Toast.LENGTH_LONG
             ).show()
             singUpViewModel.updateUser(
-                User(userName, email, avatar, clase, centro), singUpViewModel.getCurrentId(email).toString()
+                userName,
+                email,
+                avatar,
+                clase,
+                centro
             ) {
                 navController.navigate(Routes.UserInfoScreen.route)
             }

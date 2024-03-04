@@ -18,12 +18,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.User
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.DropDownMenuAvatars
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.DropDownMenuClases
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.ProgressIndicatorLogo
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Centro
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Nombre
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
+
 
 
 @Composable

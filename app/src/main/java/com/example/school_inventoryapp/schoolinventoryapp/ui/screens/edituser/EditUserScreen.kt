@@ -54,23 +54,26 @@ fun EditUserScreen(
     navController: NavHostController,
 ) {
 
-
+    val email: String by signUpViewModel.email.observeAsState(initial = "")
+    val userName: String by signUpViewModel.userName.observeAsState(initial = "")
+    val avatar: String by signUpViewModel.avatar.observeAsState(initial = "")
+    val clase: String by signUpViewModel.clase.observeAsState(initial = "")
+    val centro: String by signUpViewModel.centro.observeAsState(initial = "")
     val password1: String by signUpViewModel.password1.observeAsState(initial = "")
     val password2: String by signUpViewModel.password2.observeAsState(initial = "")
 
     val user: User? by userInfoViewModel.user.observeAsState()
-
 
     Scaffold(
         topBar = {/*empty*/ },
         content = { paddingValues ->
             ContentEditUser(
                 signUpViewModel,
-                user!!.nombre,
+                userName,
                 user!!.email,
-                user!!.avatar,
-                user!!.clase,
-                user!!.centro,
+                avatar,
+                clase,
+                centro,
                 password1,
                 password2,
                 paddingValues,
@@ -81,11 +84,11 @@ fun EditUserScreen(
             FabEditUser(
                 navController,
                 signUpViewModel,
-                user!!.nombre,
+                userName,
                 user!!.email,
-                user!!.avatar,
-                user!!.clase,
-                user!!.centro
+                avatar,
+                clase,
+                centro,
             )
         },
         floatingActionButtonPosition = FabPosition.End,

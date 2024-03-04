@@ -26,7 +26,6 @@ import com.example.school_inventoryapp.ui.theme.School_InventoryAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 
-
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
@@ -52,28 +51,44 @@ class MainActivity : ComponentActivity() {
                         startDestination = loginViewModel.checkDestination()
                     ) {
                         composable(Routes.LoginScreen.route) {
-                            LoginScreen(loginViewModel , navigationController )
+                            LoginScreen(loginViewModel, navigationController)
                         }
                         composable(Routes.SignUpScreen.route) {
                             SignUpScreen(signUpViewModel, navigationController)
                         }
                         composable(Routes.EditUserScreen.route) {
-                            EditUserScreen(signUpViewModel, userInfoViewModel ,navigationController)
+                            EditUserScreen(signUpViewModel, userInfoViewModel, navigationController)
                         }
                         composable(Routes.UserInfoScreen.route) {
-                            UserInfoScreen(userInfoViewModel, loginViewModel, openAppsViewModel, navigationController)
+                            UserInfoScreen(
+                                userInfoViewModel,
+                                loginViewModel,
+                                openAppsViewModel,
+                                navigationController
+                            )
                         }
                         composable(Routes.MaterialInfoScreen.route) {
 
                         }
                         composable(Routes.MaterialListScreen.route) {
-                            MaterialsListScreen(userInfoViewModel, loginViewModel, openAppsViewModel, materialsInfoViewModel, navigationController)
+                            MaterialsListScreen(
+                                userInfoViewModel,
+                                loginViewModel,
+                                openAppsViewModel,
+                                materialsInfoViewModel,
+                                navigationController
+                            )
                         }
                         composable(Routes.MaterialCreateScreen.route) {
 
                         }
                         composable(Routes.AppInfoScreen.route) {
-                            InfoAppScreen(loginViewModel, userInfoViewModel ,openAppsViewModel ,  navigationController)
+                            InfoAppScreen(
+                                loginViewModel,
+                                userInfoViewModel,
+                                openAppsViewModel,
+                                navigationController
+                            )
                         }
                     }
                 }
