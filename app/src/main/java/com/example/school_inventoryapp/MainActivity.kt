@@ -13,9 +13,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.appinfo.InfoAppScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.login.LoginScreen
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.materialslist.MaterialsListScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.SignUpScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.userinfo.UserInfoScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.LoginViewModel
+import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.MaterialsInfoViewModel
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.OpenAppsViewModel
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.UserInfoViewModel
@@ -31,6 +33,7 @@ class MainActivity : ComponentActivity() {
     private val signUpViewModel: SignUpViewModel by viewModels()
     private val userInfoViewModel: UserInfoViewModel by viewModels()
     private val openAppsViewModel: OpenAppsViewModel by viewModels()
+    private val materialsInfoViewModel: MaterialsInfoViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +63,7 @@ class MainActivity : ComponentActivity() {
 
                         }
                         composable(Routes.MaterialListScreen.route) {
-
+                            MaterialsListScreen(userInfoViewModel, loginViewModel, openAppsViewModel, materialsInfoViewModel, navigationController)
                         }
                         composable(Routes.MaterialCreateScreen.route) {
 

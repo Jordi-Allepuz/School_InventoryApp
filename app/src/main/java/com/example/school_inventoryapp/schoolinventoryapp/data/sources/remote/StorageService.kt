@@ -1,5 +1,6 @@
 package com.example.school_inventoryapp.schoolinventoryapp.data.sources.remote
 
+import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.Material
 import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.User
 import com.example.school_inventoryapp.schoolinventoryapp.data.mappers.userToMap
 import com.google.firebase.firestore.FirebaseFirestore
@@ -56,6 +57,36 @@ class StorageService @Inject constructor(
             result.documents.first().getLong("id")!!
         }
     }
+
+    // Obtiene la información de un libro por su nombre y retorna un objeto Book
+    suspend fun getMaterialInfo(name: String): Material? {
+        val result =
+            firebaseFirestore.collection("materiales").whereEqualTo("titulo", name).get().await()
+        return result.documents.firstOrNull()?.toObject<Material>()
+    }
+
+
+
+    // Obtiene todos los materiales disponibles y retorna una lista mutable de objetos Material.
+    suspend fun getMaterialsList(): MutableList<Material> {
+        val materiales = mutableListOf<Material>()
+        try {
+            val result = firebaseFirestore
+                .collection("materiales")
+                .get()
+                .await()
+
+            for (documento in result) {
+                val material = documento.toObject(Material::class.java)
+                materiales.add(material)
+            }
+        } catch (e: Exception) {
+            println("Error al obtener materiales coleccion: ${e.message}")
+        }
+        return materiales
+
+    }
+
 
 
 
