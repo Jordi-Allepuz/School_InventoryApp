@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.appinfo.InfoAppScreen
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.edituser.EditUserScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.login.LoginScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.materialslist.MaterialsListScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.SignUpScreen
@@ -55,6 +56,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(Routes.SignUpScreen.route) {
                             SignUpScreen(signUpViewModel, navigationController)
+                        }
+                        composable(Routes.EditUserScreen.route) {
+                            EditUserScreen(signUpViewModel, navigationController)
                         }
                         composable(Routes.UserInfoScreen.route) {
                             UserInfoScreen(userInfoViewModel, loginViewModel, openAppsViewModel, navigationController)

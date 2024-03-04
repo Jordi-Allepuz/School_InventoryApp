@@ -1,9 +1,11 @@
 package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.userinfo.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,6 +13,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.List
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -22,6 +29,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.school_inventoryapp.Routes
 import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.User
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.ProgressIndicatorLogo
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.UserInfoViewModel
@@ -62,8 +70,17 @@ fun UserInfoContent(
             Spacer(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(30.dp)
+                    .height(100.dp)
             )
+            Row( modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(30.dp)) {
+                IconButton(onClick = { navigationController.navigate(Routes.EditUserScreen.route) }) {
+                    Icon(imageVector = Icons.Default.Edit , contentDescription ="editar" )
+                }
+                IconButton(onClick = { navigationController.navigate(Routes.MaterialListScreen.route) }) {
+                    Icon(imageVector = Icons.Default.List , contentDescription = "materiales" )
+                }
+
+            }
         }
     }
 }
