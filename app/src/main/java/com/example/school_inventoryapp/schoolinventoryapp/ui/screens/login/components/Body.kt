@@ -37,11 +37,19 @@ fun Body(
         Header()
         Spacer(modifier = Modifier.size(100.dp))
         ImageLogo(Modifier.align(Alignment.CenterHorizontally))
+        Spacer(modifier = Modifier.size(10.dp))
+        Text(
+            text = "Bienvenido a School Inventory App",
+            fontSize = 30.sp,
+            fontWeight = FontWeight.ExtraBold,
+            color = Color.Black,
+            textAlign = TextAlign.Center, letterSpacing = 3.sp
+        )
         Spacer(modifier = Modifier.size(50.dp))
         Email(email) {
             loginViewModel.onLoginChange(email = it, password = password)
         }
-        Spacer(modifier = Modifier.size(10.dp))
+        Spacer(modifier = Modifier.size(20.dp))
         Password(password) {
             loginViewModel.onLoginChange(email = email, password = it)
         }
@@ -61,8 +69,6 @@ fun Body(
             email,
             password
         )
-        Spacer(modifier = Modifier.size(20.dp))
-        LoginDivider()
         Spacer(modifier = Modifier.size(20.dp))
         SignUpBottom(navigationController)
     }
