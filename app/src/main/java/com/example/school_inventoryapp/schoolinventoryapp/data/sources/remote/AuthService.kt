@@ -38,5 +38,8 @@ class AuthService @Inject constructor(private val firebaseAuth: FirebaseAuth){
         return getCurrentUser() != null
     }
 
+    // sacar la fecha de creacion del usuario
+    fun getCreationDate() = firebaseAuth.currentUser?.metadata?.creationTimestamp?.toString()
+
 
 }

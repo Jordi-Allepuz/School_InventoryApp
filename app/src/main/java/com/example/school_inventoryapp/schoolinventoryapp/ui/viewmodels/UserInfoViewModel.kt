@@ -24,6 +24,9 @@ class UserInfoViewModel @Inject constructor(
     private val _user = MutableLiveData<User>(null)
     val user: LiveData<User> = _user
 
+    private val _dateJoin = MutableLiveData<String>()
+    val dateJoin: LiveData<String> = _dateJoin
+
     private val _currentUserEmail = MutableLiveData<String>()
     val currentUserEmail: LiveData<String> = _currentUserEmail
 
@@ -42,6 +45,14 @@ class UserInfoViewModel @Inject constructor(
             }
         }
     }
+
+    // Método para obtener la fecha de creación del usuario actual.
+    fun getCreationDate() {
+        viewModelScope.launch {
+            _dateJoin.value = authService.getCreationDate()
+        }
+    }
+
 
 
 

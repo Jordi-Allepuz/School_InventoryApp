@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.School
 import androidx.compose.material.icons.rounded.SwipeDown
@@ -25,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.school_inventoryapp.schoolinventoryapp.ui.data.listaClases
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
@@ -52,6 +54,7 @@ fun DropDownMenuClases(
     Column(verticalArrangement = Arrangement.SpaceBetween) {
         OutlinedTextField(
             value = clase,
+            shape = RoundedCornerShape(10.dp),
             enabled = enable,
             onValueChange = {
                 singUpViewModel.onLoginChange(
@@ -64,7 +67,7 @@ fun DropDownMenuClases(
                     password2,
                 )
             },
-            label = { Text(text = "Selecciona una curso", color = Color.Black) },
+            label = { Text(text = "Selecciona una curso", color = Color.Black,fontWeight = FontWeight.Bold) },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Rounded.School,
@@ -81,8 +84,11 @@ fun DropDownMenuClases(
             singleLine = true,
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 disabledTextColor = Color.Black,
-                disabledBorderColor = MaterialTheme.colorScheme.outline,
-                disabledLeadingIconColor = MaterialTheme.colorScheme.outline
+                disabledBorderColor = Color.Transparent,
+                disabledLeadingIconColor = MaterialTheme.colorScheme.outline ,
+                containerColor = Color(0xFFF5F2F2),
+                unfocusedBorderColor = Color.Transparent,
+                focusedBorderColor = Color.Transparent
             )
         )
         DropdownMenu(

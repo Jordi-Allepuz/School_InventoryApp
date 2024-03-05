@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
@@ -46,7 +47,7 @@ fun BottomBar(navigationController: NavHostController, loginViewModel: LoginView
                 Spacer(
                     modifier = Modifier
                         .fillMaxHeight()
-                        .width(100.dp)
+                        .width(70.dp)
                 )
 
                 // IconButton para cerrar sesión.
@@ -58,6 +59,19 @@ fun BottomBar(navigationController: NavHostController, loginViewModel: LoginView
                     Icon(
                         imageVector = Icons.Default.Logout,
                         contentDescription = "out",
+                        tint = Color.Black,
+                        modifier = Modifier.size(40.dp)
+                    )
+                }
+                Spacer(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(70.dp)
+                )
+                IconButton(onClick = { navigationController.navigate(Routes.MaterialListScreen.route) }) {
+                    Icon(
+                        imageVector = Icons.Default.List,
+                        contentDescription = "materiales",
                         tint = Color.Black,
                         modifier = Modifier.size(40.dp)
                     )

@@ -8,10 +8,13 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Face
 import androidx.compose.material.icons.rounded.School
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -32,6 +35,7 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.example.school_inventoryapp.schoolinventoryapp.ui.data.listaClases
@@ -57,17 +61,22 @@ fun DropDownMenuAvatars(
     // Lista de cursos que hay en el centro educativo.
     val avatars: List<String> by singUpViewModel.avatars.observeAsState(initial = listOf())
 
-    Column(verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.CenterHorizontally) {
-        Card() {
+    Column(
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Card(colors = CardDefaults.cardColors(containerColor = Color(0xFFF5F2F2))) {
             Image(
                 painter = rememberImagePainter(data = avatar),
                 contentDescription = null,
                 modifier = Modifier
                     .size(60.dp)
-                    .padding(vertical = 2.dp))
+                    .padding(vertical = 2.dp)
+            )
         }
         OutlinedTextField(
             value = "",
+            shape = RoundedCornerShape(10.dp),
             enabled = enable,
             onValueChange = {
                 singUpViewModel.onLoginChange(
@@ -80,7 +89,13 @@ fun DropDownMenuAvatars(
                     password2,
                 )
             },
-            label = { Text(text = "Selecciona un avatar", color = Color.Black) },
+            label = {
+                Text(
+                    text = "Selecciona un avatar",
+                    color = Color.Black,
+                    fontWeight = FontWeight.Bold
+                )
+            },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Rounded.Face,
@@ -97,8 +112,11 @@ fun DropDownMenuAvatars(
             singleLine = true,
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 disabledTextColor = Color.Black,
-                disabledBorderColor = MaterialTheme.colorScheme.outline,
-                disabledLeadingIconColor = MaterialTheme.colorScheme.outline
+                disabledBorderColor = Color.Transparent,
+                disabledLeadingIconColor = MaterialTheme.colorScheme.outline ,
+                containerColor = Color(0xFFF5F2F2),
+                unfocusedBorderColor = Color.Transparent,
+                focusedBorderColor = Color.Transparent
             )
         )
         DropdownMenu(
@@ -122,13 +140,18 @@ fun DropDownMenuAvatars(
                     expanded = false
                 },
                     text = {
-                        Column (modifier=Modifier.fillMaxWidth() ,horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center){
+                        Column(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
                             Image(
                                 painter = rememberImagePainter(data = avatar),
                                 contentDescription = null,
                                 modifier = Modifier
                                     .size(60.dp)
-                                    .padding(vertical = 2.dp))
+                                    .padding(vertical = 2.dp)
+                            )
                         }
                     })
 

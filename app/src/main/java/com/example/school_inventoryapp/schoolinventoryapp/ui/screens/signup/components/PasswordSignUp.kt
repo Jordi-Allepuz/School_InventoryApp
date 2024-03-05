@@ -1,6 +1,7 @@
 package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components
 
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -13,6 +14,7 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -24,9 +26,9 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 fun Password1(
     userName: String,
     email: String,
-    avatar:String,
-    clase:String,
-    curso:String,
+    avatar: String,
+    clase: String,
+    curso: String,
     password1: String,
     password2: String,
     singUpViewModel: SignUpViewModel,
@@ -46,7 +48,7 @@ fun Password1(
                 password2
             )
         },
-        label = { Text(text = "Contraseña", color = Color.Black) },
+        label = { Text(text = "Contraseña", color = Color.Black,fontWeight = FontWeight.Bold) },
         trailingIcon = {
             val passwordImagen = if (passwordVisibility) {
                 Icons.Filled.VisibilityOff
@@ -62,18 +64,22 @@ fun Password1(
             }
         },
         modifier = Modifier.size(300.dp, 90.dp),
+        shape = RoundedCornerShape(10.dp),
         visualTransformation = if (passwordVisibility) {
             PasswordVisualTransformation()
         } else {
             VisualTransformation.None
         },
-        supportingText = { Text(text = "Introduce contraseña", color = Color.Black) },
-        colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.Black),
+        supportingText = { Text(text = "Introduce contraseña", color = Color.Black,fontWeight = FontWeight.Bold) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            textColor = Color.Black,
+            containerColor = Color(0xFFF5F2F2),
+            unfocusedBorderColor = Color.Transparent,
+            focusedBorderColor = Color.Transparent
+        ),
         singleLine = true
     )
 }
-
-
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -81,9 +87,9 @@ fun Password1(
 fun Password2(
     userName: String,
     email: String,
-    avatar:String,
-    clase:String,
-    curso:String,
+    avatar: String,
+    clase: String,
+    curso: String,
     password1: String,
     password2: String,
     singUpViewModel: SignUpViewModel,
@@ -103,7 +109,7 @@ fun Password2(
                 it
             )
         },
-        label = { Text(text = "Contraseña", color = Color.Black) },
+        label = { Text(text = "Contraseña", color = Color.Black,fontWeight = FontWeight.Bold) },
         trailingIcon = {
             val passwordImagen = if (passwordVisibility) {
                 Icons.Filled.VisibilityOff
@@ -119,13 +125,19 @@ fun Password2(
             }
         },
         modifier = Modifier.size(300.dp, 90.dp),
+        shape = RoundedCornerShape(10.dp),
         visualTransformation = if (passwordVisibility) {
             PasswordVisualTransformation()
         } else {
             VisualTransformation.None
         },
-        supportingText = { Text(text = "Confirmar contraseña", color = Color.Black) },
-        colors = TextFieldDefaults.outlinedTextFieldColors(textColor = Color.Black),
+        supportingText = { Text(text = "Confirmar contraseña", color = Color.Black,fontWeight = FontWeight.Bold) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            textColor = Color.Black,
+            containerColor = Color(0xFFF5F2F2),
+            unfocusedBorderColor = Color.Transparent,
+            focusedBorderColor = Color.Transparent
+        ),
         singleLine = true
     )
 }
