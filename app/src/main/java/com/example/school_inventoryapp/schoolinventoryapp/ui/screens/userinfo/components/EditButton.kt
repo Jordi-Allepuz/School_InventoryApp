@@ -12,11 +12,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.school_inventoryapp.Routes
+
 
 @Composable
-fun EditButton() {
+fun EditButton(navigationController: NavHostController) {
     Button(
-        onClick = { },
+        onClick = { navigationController.navigate(Routes.EditUserScreen.route) },
         modifier = Modifier
             .size(400.dp, 50.dp)
             .padding(horizontal = 15.dp),

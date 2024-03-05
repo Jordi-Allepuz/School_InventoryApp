@@ -1,5 +1,6 @@
 package com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -49,7 +50,8 @@ class UserInfoViewModel @Inject constructor(
     // Método para obtener la fecha de creación del usuario actual.
     fun getCreationDate() {
         viewModelScope.launch {
-            _dateJoin.value = authService.getCreationDate()
+            _dateJoin.value = authService.getCreationDate()!!
+            Log.i("CreationDate", _dateJoin.value!!)
         }
     }
 

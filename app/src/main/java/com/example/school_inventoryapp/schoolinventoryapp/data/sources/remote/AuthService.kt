@@ -3,6 +3,9 @@ package com.example.school_inventoryapp.schoolinventoryapp.data.sources.remote
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.tasks.await
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 
@@ -39,7 +42,12 @@ class AuthService @Inject constructor(private val firebaseAuth: FirebaseAuth){
     }
 
     // sacar la fecha de creacion del usuario
-    fun getCreationDate() = firebaseAuth.currentUser?.metadata?.creationTimestamp?.toString()
+    fun getCreationDate():String? {
+        val timestamp = firebaseAuth.currentUser?.metadata?.lastSignInTimestamp ?: return null
+        val date = Date(timestamp)
+        val format = SimpleDateFormat("MMMM,yyyy", Locale.getDefault())
+        return format.format(date)
+    }
 
 
 }

@@ -9,12 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -43,9 +39,11 @@ fun UserInfoContent(
         Brush.linearGradient(listOf(MaterialTheme.colorScheme.background, Color(0xFFEBB25B)))
 
     val user: User? by userInfoViewModel.user.observeAsState()
+    val dateJoin:String? by userInfoViewModel.dateJoin.observeAsState()
 
     LaunchedEffect(Unit) {
         userInfoViewModel.getInfoUser()
+        userInfoViewModel.getCreationDate()
     }
 
     if (user == null) {
@@ -65,13 +63,18 @@ fun UserInfoContent(
                 .padding(top = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            UserInfoCard(user!!)
+            UserCard(user!!)
             Spacer(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
+                    .height(60.dp)
             )
-            EditButton()
+            UserInfo(user!!)
+            Spacer(modifier = Modifier
+                .fillMaxWidth()
+                .height(80.dp))
+            Text(text = "Ultima sesión: ${dateJoin!!}", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            EditButton(navigationController)
         }
     }
 }
