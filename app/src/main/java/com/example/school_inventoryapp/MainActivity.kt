@@ -81,7 +81,7 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Routes.NewMaterialScreen.route) {
-                            NewMaterialScreen(loginViewModel, navigationController)
+                            NewMaterialScreen(materialsInfoViewModel, loginViewModel, navigationController)
                         }
                         composable(Routes.AppInfoScreen.route) {
                             InfoAppScreen(

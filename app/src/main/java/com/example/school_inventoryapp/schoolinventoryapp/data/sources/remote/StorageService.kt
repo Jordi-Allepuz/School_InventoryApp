@@ -2,6 +2,7 @@ package com.example.school_inventoryapp.schoolinventoryapp.data.sources.remote
 
 import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.Material
 import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.User
+import com.example.school_inventoryapp.schoolinventoryapp.data.mappers.materialToMap
 import com.example.school_inventoryapp.schoolinventoryapp.data.mappers.userToMap
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
@@ -69,6 +70,14 @@ class StorageService @Inject constructor(
             result.documents.first().getLong("id")!!
         }
     }
+
+
+    // Añade un nuevo material a la colección de materiales
+    suspend fun addMaterial(material: Material): Boolean {
+        val materialMap = materialToMap(material)
+        return firebaseFirestore.collection("materiales").add(materialMap).isComplete
+    }
+
 
     // Obtiene la información de un libro por su nombre y retorna un objeto Book
     suspend fun getMaterialInfo(name: String): Material? {

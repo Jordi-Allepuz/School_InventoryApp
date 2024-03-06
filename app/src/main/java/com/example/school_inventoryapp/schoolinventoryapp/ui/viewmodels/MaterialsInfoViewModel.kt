@@ -14,7 +14,8 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class MaterialsInfoViewModel @Inject constructor(private val storageService: StorageService) : ViewModel(){
+class MaterialsInfoViewModel @Inject constructor(private val storageService: StorageService) :
+    ViewModel() {
 
     private val _material = MutableLiveData<Material>()
     val material: LiveData<Material> = _material
@@ -22,10 +23,30 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
     private val _materialList = MutableLiveData<MutableList<Material>>()
     val materialList: LiveData<MutableList<Material>> = _materialList
 
+    private val _nombreMaterial = MutableLiveData<String>()
+    val nombreMaterial: LiveData<String> = _nombreMaterial
+
+    private val _cantidadMaterial = MutableLiveData<Int>()
+    val cantidadMaterial: LiveData<Int> = _cantidadMaterial
+
+    private val _asignaturaMaterial = MutableLiveData<String>()
+    val asignaturaMaterial: LiveData<String> = _asignaturaMaterial
+
+    private val _cursoMaterial = MutableLiveData<String>()
+    val cursoMaterial: LiveData<String> = _cursoMaterial
+
+    private val _descriptionMaterial = MutableLiveData<String>()
+    val descriptionMaterial: LiveData<String> = _descriptionMaterial
+
+    private val _imageMaterial = MutableLiveData<String>()
+    val imageMaterial: LiveData<String> = _imageMaterial
+
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
 
-    // Método para obtener la información de un libro específico.
-    fun getMaterialInfo (name: String, toInfo: () -> Unit) {
+    // Método para obtener la información de un material específico.
+    fun getMaterialInfo(name: String, toInfo: () -> Unit) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
                 storageService.getMaterialInfo(name)
@@ -40,7 +61,7 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
     }
 
 
-    // Método para obtener todos los libros disponibles.
+    // Método para obtener todos los materiales disponibles.
     fun getMaterialList(toList: () -> Unit) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
@@ -51,6 +72,55 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
         }
     }
 
+
+    fun onCreateChange(
+        nombreMaterial: String,
+        cantidadMaterial: Int,
+        asignaturaMaterial: String,
+        cursoMaterial: String,
+        descriptionMaterial: String,
+        imageMaterial: String
+    ) {
+        _nombreMaterial.value = nombreMaterial
+        _cantidadMaterial.value = cantidadMaterial
+        _asignaturaMaterial.value = asignaturaMaterial
+        _cursoMaterial.value = cursoMaterial
+        _descriptionMaterial.value = descriptionMaterial
+        _imageMaterial.value = imageMaterial
+    }
+
+
+    // Método para añadir un nuevo material.
+    fun addMaterial(
+        nombreMaterial: String,
+        cantidadMateria: Int,
+        asignaturaMaterial: String,
+        cursoMateria: String,
+        descriptionMaterial: String,
+        imageMaterial: String,
+        toList: () -> Unit
+    ) {
+        viewModelScope.launch {
+            _isLoading.value = true
+            val result = withContext(Dispatchers.IO) {
+                storageService.addMaterial(
+                    Material(
+                        nombreMaterial,
+                        cantidadMateria,
+                        asignaturaMaterial,
+                        cursoMateria,
+                        descriptionMaterial,
+                        imageMaterial
+                    )
+                )
+            }
+            if (result) {
+                getMaterialList(toList)
+            } else {
+                _isLoading.value = false
+            }
+        }
+    }
 
 
 }
