@@ -11,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Logout
+import androidx.compose.material.icons.filled.NewLabel
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -72,6 +73,19 @@ fun BottomBar(navigationController: NavHostController, loginViewModel: LoginView
                     Icon(
                         imageVector = Icons.Default.List,
                         contentDescription = "materiales",
+                        tint = Color.Black,
+                        modifier = Modifier.size(40.dp)
+                    )
+                }
+                Spacer(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(70.dp)
+                )
+                IconButton(onClick = { navigationController.navigate(Routes.NewMaterialScreen.route) }) {
+                    Icon(
+                        imageVector = Icons.Default.NewLabel,
+                        contentDescription = "newmaterial",
                         tint = Color.Black,
                         modifier = Modifier.size(40.dp)
                     )

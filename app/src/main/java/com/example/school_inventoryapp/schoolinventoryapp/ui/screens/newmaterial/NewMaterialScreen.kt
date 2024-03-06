@@ -1,4 +1,4 @@
-package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.creatematerial
+package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.newmaterial
 
 import android.annotation.SuppressLint
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -6,7 +6,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.BottomBar
-import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.creatematerial.components.ContentNewMaterial
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.newmaterial.components.ContentNewMaterial
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.LoginViewModel
 
 

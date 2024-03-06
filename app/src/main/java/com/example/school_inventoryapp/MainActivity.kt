@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.appinfo.InfoAppScreen
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.newmaterial.NewMaterialScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.edituser.EditUserScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.login.LoginScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.materialslist.MaterialsListScreen
@@ -79,8 +80,8 @@ class MainActivity : ComponentActivity() {
                                 navigationController
                             )
                         }
-                        composable(Routes.MaterialCreateScreen.route) {
-
+                        composable(Routes.NewMaterialScreen.route) {
+                            NewMaterialScreen(loginViewModel, navigationController)
                         }
                         composable(Routes.AppInfoScreen.route) {
                             InfoAppScreen(

@@ -8,6 +8,6 @@ sealed class Routes(val route: String) {
     object EditUserScreen : Routes ("edituserscreen")
     object MaterialInfoScreen : Routes ("materialinfoscreen")
     object MaterialListScreen : Routes ("materiallistscreen")
-    object MaterialCreateScreen : Routes ("materialcreatescreen")
+    object NewMaterialScreen : Routes ("newmaterialscreen")
     object AppInfoScreen : Routes ("appinfoscreen")
 }

@@ -1,4 +1,4 @@
-package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.creatematerial.components
+package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.newmaterial.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
