@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.school_inventoryapp.Routes
+import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
 
 @Composable
 fun SignUpBottom(
@@ -29,8 +30,13 @@ fun SignUpBottom(
             text = "Crear Cuenta",
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { navigationController.navigate(Routes.SignUpScreen.route) },
-            fontWeight = FontWeight.ExtraBold, color = Color.Black, textAlign = TextAlign.Center, fontSize = 18.sp
+                .clickable {
+                    navigationController.navigate(Routes.SignUpScreen.route)
+                },
+            fontWeight = FontWeight.ExtraBold,
+            color = Color.Black,
+            textAlign = TextAlign.Center,
+            fontSize = 18.sp
         )
 
     }

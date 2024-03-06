@@ -15,6 +15,7 @@ import androidx.navigation.NavHostController
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.ProgressIndicatorLogo
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.login.components.Body
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.LoginViewModel
+import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
 
 @Composable
 fun LoginScreen(

@@ -40,16 +40,7 @@ fun MaterialListCard(
             .width(300.dp)
             .height(350.dp)
             .padding(vertical = 16.dp, horizontal = 20.dp)
-            .clickable {
-//                userInfoViewModel.addBookUser(
-//                    book,
-//                    userInfoViewModel.userId.value!!.toString()
-//                ) {
-//                    navigationController.navigate(
-//                        Routes.UserInfoScreen.route
-//                    )
-//                }
-            }, shape = RoundedCornerShape(8.dp), colors = CardDefaults.cardColors(containerColor = Color(0xFF358F80))
+            .clickable { }, shape = RoundedCornerShape(8.dp), colors = CardDefaults.cardColors(containerColor = Color(0xFF358F80))
     ) {
         Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
             Text(text = material.nombre, textAlign = TextAlign.Center, fontWeight = FontWeight.Bold, modifier = Modifier.padding(vertical = 8.dp))

@@ -79,6 +79,15 @@ class SignUpViewModel @Inject constructor(
         _isSignUpEnable.value = enableSignUp(email, password1, password2)
     }
 
+    fun cleanData(){
+        _userName.value = ""
+        _email.value = ""
+        _clase.value = ""
+        _centro.value = ""
+        _password1.value = ""
+        _password2.value = ""
+    }
+
 
     // Valida el correo electrónico y las contraseñas para habilitar el registro.
     fun enableSignUp(
@@ -139,12 +148,6 @@ class SignUpViewModel @Inject constructor(
                 )
             }
             if (result != null) {
-                _userName.value = ""
-                _email.value = ""
-                _clase.value = ""
-                _centro.value = ""
-                _password1.value = ""
-                _password2.value = ""
                 //
             } else {
                 //error

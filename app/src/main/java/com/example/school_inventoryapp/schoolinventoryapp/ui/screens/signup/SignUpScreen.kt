@@ -157,6 +157,7 @@ fun ContentNewUSer(
     val isLoading: Boolean by singUpViewModel.isLoading.observeAsState(false)
 
     LaunchedEffect(Unit) {
+        singUpViewModel.cleanData()
         singUpViewModel.getAvatars()
     }
 

@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.LoginViewModel
+import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
 
 /*BODY*/
 @Composable
