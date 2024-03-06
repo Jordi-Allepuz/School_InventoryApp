@@ -12,18 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.User
-import com.example.school_inventoryapp.schoolinventoryapp.ui.components.DropDownMenuAvatars
-import com.example.school_inventoryapp.schoolinventoryapp.ui.components.DropDownMenuClases
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.AvatarsSignUp
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.ClasesSignUp
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.ProgressIndicatorLogo
-import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Centro
-import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Nombre
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.CentroSignUp
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.NameSignUp
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
 
 
@@ -38,7 +35,7 @@ fun ContentEditUser(
     centro: String,
     password1: String,
     password2: String,
-    paddingValues: PaddingValues,
+    paddingValues: PaddingValues
 ) {
 
     val isLoading: Boolean by singUpViewModel.isLoading.observeAsState(false)
@@ -70,7 +67,7 @@ fun ContentEditUser(
                     .padding(bottom = 80.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Nombre(
+                NameEditUser(
                     userName,
                     email,
                     avatar,
@@ -80,7 +77,7 @@ fun ContentEditUser(
                     password2,
                     singUpViewModel
                 )
-                DropDownMenuAvatars(
+                AvatarsEditUser(
                     userName,
                     email,
                     avatar,
@@ -90,7 +87,7 @@ fun ContentEditUser(
                     password2,
                     singUpViewModel
                 )
-                DropDownMenuClases(
+                ClasesEditUser(
                     userName,
                     email,
                     avatar,
@@ -100,7 +97,7 @@ fun ContentEditUser(
                     password2,
                     singUpViewModel
                 )
-                Centro(
+                CentroEditUser(
                     userName,
                     email,
                     avatar,

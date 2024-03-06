@@ -1,9 +1,10 @@
-package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components
+package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.edituser.components
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Person
+import androidx.compose.material.icons.rounded.Apartment
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
@@ -13,13 +14,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NameSignUp(
+fun CentroEditUser(
     userName: String,
     email: String,
     avatar: String,
@@ -30,38 +31,35 @@ fun NameSignUp(
     singUpViewModel: SignUpViewModel
 ) {
     OutlinedTextField(
-        value = userName,
-        shape = RoundedCornerShape(10.dp),
+        value = curso,
         onValueChange = {
             singUpViewModel.onLoginChange(
-                it,
+                userName,
                 email,
                 avatar,
                 clase,
-                curso,
+                it,
                 password1,
                 password2,
             )
         },
-        label = {
-            Text(
-                text = "Nombre y Apellidos", color = Color.Black,
-                fontWeight = FontWeight.Bold
-            )
-        },
+        label = { Text(text = "Centro de trabajo", color = Color.Black ,fontWeight = FontWeight.Bold) },
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            textColor = Color.Black, containerColor = Color(0xFFF5F2F2),
+            textColor = Color.Black,
+            containerColor = Color(0xFFF5F2F2),
             unfocusedBorderColor = Color.Transparent,
             focusedBorderColor = Color.Transparent
         ),
         leadingIcon = {
             Icon(
-                imageVector = Icons.Rounded.Person,
-                contentDescription = "name"
+                imageVector = Icons.Rounded.Apartment,
+                contentDescription = "centro"
             )
         },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
         modifier = Modifier.size(300.dp, 60.dp),
+        shape = RoundedCornerShape(10.dp),
         singleLine = true
+
     )
 }
-

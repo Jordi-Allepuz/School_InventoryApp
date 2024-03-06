@@ -31,14 +31,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.school_inventoryapp.Routes
-import com.example.school_inventoryapp.schoolinventoryapp.ui.components.DropDownMenuAvatars
-import com.example.school_inventoryapp.schoolinventoryapp.ui.components.DropDownMenuClases
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.AvatarsSignUp
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.ClasesSignUp
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.ProgressIndicatorLogo
-import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Centro
-import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Email
-import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Nombre
-import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Password1
-import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Password2
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.CentroSignUp
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.EmailSignUp
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.NameSignUp
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Password1SignUp
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components.Password2SignUp
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -183,7 +183,7 @@ fun ContentNewUSer(
                     .padding(bottom = 80.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Nombre(
+                NameSignUp(
                     userName,
                     email,
                     avatar,
@@ -193,7 +193,7 @@ fun ContentNewUSer(
                     password2,
                     singUpViewModel
                 )
-                Email(
+                EmailSignUp(
                     userName,
                     email,
                     avatar,
@@ -203,7 +203,7 @@ fun ContentNewUSer(
                     password2,
                     singUpViewModel
                 )
-                DropDownMenuAvatars(
+                AvatarsSignUp(
                     userName,
                     email,
                     avatar,
@@ -213,7 +213,7 @@ fun ContentNewUSer(
                     password2,
                     singUpViewModel
                 )
-                DropDownMenuClases(
+                ClasesSignUp(
                     userName,
                     email,
                     avatar,
@@ -223,7 +223,7 @@ fun ContentNewUSer(
                     password2,
                     singUpViewModel
                 )
-                Centro(
+                CentroSignUp(
                     userName,
                     email,
                     avatar,
@@ -233,7 +233,7 @@ fun ContentNewUSer(
                     password2,
                     singUpViewModel
                 )
-                Password1(
+                Password1SignUp(
                     userName,
                     email,
                     avatar,
@@ -245,7 +245,7 @@ fun ContentNewUSer(
                     passwordVisibility,
                     setPasswordVisibility = { passwordVisibility = it }
                 )
-                Password2(
+                Password2SignUp(
                     userName,
                     email,
                     avatar,

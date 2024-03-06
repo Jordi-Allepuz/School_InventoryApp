@@ -23,7 +23,7 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Password1(
+fun Password1SignUp(
     userName: String,
     email: String,
     avatar: String,
@@ -84,7 +84,7 @@ fun Password1(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Password2(
+fun Password2SignUp(
     userName: String,
     email: String,
     avatar: String,

@@ -5,8 +5,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Apartment
-import androidx.compose.material.icons.rounded.Email
-import androidx.compose.material.icons.rounded.School
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
@@ -22,7 +20,7 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Centro(
+fun CentroSignUp(
     userName: String,
     email: String,
     avatar: String,
@@ -45,7 +43,7 @@ fun Centro(
                 password2,
             )
         },
-        label = { Text(text = "Centro Educativo", color = Color.Black ,fontWeight = FontWeight.Bold) },
+        label = { Text(text = "Centro de trabajo", color = Color.Black ,fontWeight = FontWeight.Bold) },
         colors = TextFieldDefaults.outlinedTextFieldColors(
             textColor = Color.Black,
             containerColor = Color(0xFFF5F2F2),

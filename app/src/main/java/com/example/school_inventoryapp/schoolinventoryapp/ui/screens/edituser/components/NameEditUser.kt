@@ -1,4 +1,4 @@
-package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components
+package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.edituser.components
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,10 +16,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NameSignUp(
+fun NameEditUser(
     userName: String,
     email: String,
     avatar: String,

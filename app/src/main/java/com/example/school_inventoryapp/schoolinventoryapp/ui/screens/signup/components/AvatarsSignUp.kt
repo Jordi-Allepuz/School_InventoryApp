@@ -1,4 +1,4 @@
-package com.example.school_inventoryapp.schoolinventoryapp.ui.components
+package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -11,16 +11,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Face
-import androidx.compose.material.icons.rounded.School
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MenuDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -31,20 +28,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
-import com.example.school_inventoryapp.schoolinventoryapp.ui.data.listaClases
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
-import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.UserInfoViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DropDownMenuAvatars(
+fun AvatarsSignUp(
     userName: String,
     email: String,
     avatar: String,

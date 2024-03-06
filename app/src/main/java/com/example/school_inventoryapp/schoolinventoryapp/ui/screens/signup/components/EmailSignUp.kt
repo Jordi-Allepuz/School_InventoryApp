@@ -1,8 +1,5 @@
 package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.components
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -23,7 +20,7 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Email(
+fun EmailSignUp(
     userName: String,
     email: String,
     avatar: String,
