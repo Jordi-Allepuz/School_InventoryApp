@@ -37,7 +37,8 @@ fun ButtonAddMaterial(
                 asignaturaMaterial,
                 descriptionMaterial,
                 imageMaterial
-            ) { }
+            )
+            navigationController.navigate(Routes.MaterialListScreen.route)
         },
         enabled = nombreMaterial.isNotEmpty() && cantidadMaterial.isNotEmpty() && asignaturaMaterial.isNotEmpty() && cursoMaterial.isNotEmpty() && descriptionMaterial.isNotEmpty(),
         modifier = Modifier

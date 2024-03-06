@@ -62,13 +62,12 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
 
 
     // Método para obtener todos los materiales disponibles.
-    fun getMaterialList(toList: () -> Unit) {
+    fun getMaterialList() {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
                 storageService.getMaterialsList()
             }
             _materialList.value = result
-            toList()
         }
     }
 
@@ -98,7 +97,6 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
         asignaturaMaterial: String,
         descriptionMaterial: String,
         imageMaterial: String,
-        toList: () -> Unit
     ) {
         viewModelScope.launch {
             _isLoading.value = true
@@ -115,7 +113,7 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
                 )
             }
             if (result) {
-                toList()
+                //
             } else {
                 _isLoading.value = false
             }
