@@ -26,8 +26,8 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
     private val _nombreMaterial = MutableLiveData<String>()
     val nombreMaterial: LiveData<String> = _nombreMaterial
 
-    private val _cantidadMaterial = MutableLiveData<Int>()
-    val cantidadMaterial: LiveData<Int> = _cantidadMaterial
+    private val _cantidadMaterial = MutableLiveData<String>()
+    val cantidadMaterial: LiveData<String> = _cantidadMaterial
 
     private val _asignaturaMaterial = MutableLiveData<String>()
     val asignaturaMaterial: LiveData<String> = _asignaturaMaterial
@@ -75,16 +75,16 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
 
     fun onCreateChange(
         nombreMaterial: String,
-        cantidadMaterial: Int,
-        asignaturaMaterial: String,
+        cantidadMaterial: String,
         cursoMaterial: String,
+        asignaturaMaterial: String,
         descriptionMaterial: String,
         imageMaterial: String
     ) {
         _nombreMaterial.value = nombreMaterial
         _cantidadMaterial.value = cantidadMaterial
-        _asignaturaMaterial.value = asignaturaMaterial
         _cursoMaterial.value = cursoMaterial
+        _asignaturaMaterial.value = asignaturaMaterial
         _descriptionMaterial.value = descriptionMaterial
         _imageMaterial.value = imageMaterial
     }
@@ -93,9 +93,9 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
     // Método para añadir un nuevo material.
     fun addMaterial(
         nombreMaterial: String,
-        cantidadMateria: Int,
-        asignaturaMaterial: String,
+        cantidadMateria: String,
         cursoMateria: String,
+        asignaturaMaterial: String,
         descriptionMaterial: String,
         imageMaterial: String,
         toList: () -> Unit
@@ -107,15 +107,15 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
                     Material(
                         nombreMaterial,
                         cantidadMateria,
-                        asignaturaMaterial,
                         cursoMateria,
+                        asignaturaMaterial,
                         descriptionMaterial,
                         imageMaterial
                     )
                 )
             }
             if (result) {
-                getMaterialList(toList)
+                toList()
             } else {
                 _isLoading.value = false
             }

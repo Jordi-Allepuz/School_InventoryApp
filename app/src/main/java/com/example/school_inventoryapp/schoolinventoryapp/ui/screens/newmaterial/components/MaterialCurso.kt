@@ -27,16 +27,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.school_inventoryapp.schoolinventoryapp.ui.data.listaClases
+import com.example.school_inventoryapp.schoolinventoryapp.ui.data.listaCursos
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.MaterialsInfoViewModel
-import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ClasesNewMaterial(
+fun CursoNewMaterial(
     nombreMaterial: String,
-    cantidadMaterial: Int,
-    asignaturaMaterial: String,
+    cantidadMaterial: String,
     cursoMaterial: String,
+    asignaturaMaterial: String,
     descriptionMaterial: String,
     imageMaterial: String,
     materialsInfoViewModel: MaterialsInfoViewModel
@@ -46,11 +46,11 @@ fun ClasesNewMaterial(
     var expanded by remember { mutableStateOf(false) }
     var enable by remember { mutableStateOf(false) }
     // Lista de cursos que hay en el centro educativo.
-    val clases = listaClases()
+    val cursos = listaCursos()
 
     Column(verticalArrangement = Arrangement.SpaceBetween) {
         OutlinedTextField(
-            value = asignaturaMaterial,
+            value = cursoMaterial,
             shape = RoundedCornerShape(10.dp),
             enabled = enable,
             onValueChange = {
@@ -58,7 +58,7 @@ fun ClasesNewMaterial(
                     nombreMaterial,
                     cantidadMaterial,
                     it,
-                    cursoMaterial,
+                    asignaturaMaterial,
                     descriptionMaterial,
                     imageMaterial
                 )
@@ -100,19 +100,19 @@ fun ClasesNewMaterial(
                 .size(300.dp)
                 .fillMaxHeight()
         ) {
-            clases.forEach { clase ->
+            cursos.forEach { curso ->
                 DropdownMenuItem(onClick = {
                     materialsInfoViewModel.onCreateChange(
                         nombreMaterial,
                         cantidadMaterial,
-                        clase,
-                        cursoMaterial,
+                        curso,
+                        asignaturaMaterial,
                         descriptionMaterial,
                         imageMaterial
                     )
                     expanded = false
                 }, text = {
-                    Text(text = clase)
+                    Text(text = curso)
                 }, colors = MenuDefaults.itemColors(textColor = Color.Black))
 
             }

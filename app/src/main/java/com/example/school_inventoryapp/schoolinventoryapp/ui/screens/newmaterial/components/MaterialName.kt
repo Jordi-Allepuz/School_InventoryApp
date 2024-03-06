@@ -21,9 +21,9 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.SignUpVi
 @Composable
 fun NameNewMaterial(
     nombreMaterial: String,
-    cantidadMaterial: Int,
-    asignaturaMaterial: String,
+    cantidadMaterial: String,
     cursoMaterial: String,
+    asignaturaMaterial: String,
     descriptionMaterial: String,
     imageMaterial: String,
     materialsInfoViewModel: MaterialsInfoViewModel
@@ -36,8 +36,8 @@ fun NameNewMaterial(
             materialsInfoViewModel.onCreateChange(
                 it,
                 cantidadMaterial,
-                asignaturaMaterial,
                 cursoMaterial,
+                asignaturaMaterial,
                 descriptionMaterial,
                 imageMaterial
             )

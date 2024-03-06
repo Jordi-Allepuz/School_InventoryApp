@@ -23,7 +23,7 @@ fun NewMaterialScreen(
 ) {
 
     val nombreMaterial: String by materialsInfoViewModel.nombreMaterial.observeAsState(initial = "")
-    val cantidadMaterial: Int by materialsInfoViewModel.cantidadMaterial.observeAsState(initial = 0)
+    val cantidadMaterial: String by materialsInfoViewModel.cantidadMaterial.observeAsState(initial = "")
     val asignaturaMaterial: String by materialsInfoViewModel.asignaturaMaterial.observeAsState(initial = "")
     val cursoMaterial: String by materialsInfoViewModel.cursoMaterial.observeAsState(initial = "")
     val descriptionMaterial: String by materialsInfoViewModel.descriptionMaterial.observeAsState(initial = "")
@@ -37,11 +37,12 @@ fun NewMaterialScreen(
             ContentNewMaterial(
                 nombreMaterial,
                 cantidadMaterial,
-                asignaturaMaterial,
                 cursoMaterial,
+                asignaturaMaterial,
                 descriptionMaterial,
                 imageMaterial,
                 materialsInfoViewModel,
+                navController,
                 paddingValues,
             )
         },

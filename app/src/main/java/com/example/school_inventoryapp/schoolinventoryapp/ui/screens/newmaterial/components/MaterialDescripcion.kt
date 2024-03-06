@@ -20,9 +20,9 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.Material
 @Composable
 fun DescripcionNewMaterial(
     nombreMaterial: String,
-    cantidadMaterial: Int,
-    asignaturaMaterial: String,
+    cantidadMaterial: String,
     cursoMaterial: String,
+    asignaturaMaterial: String,
     descriptionMaterial: String,
     imageMaterial: String,
     materialsInfoViewModel: MaterialsInfoViewModel
@@ -35,8 +35,8 @@ fun DescripcionNewMaterial(
             materialsInfoViewModel.onCreateChange(
                 nombreMaterial,
                 cantidadMaterial,
-                asignaturaMaterial,
                 cursoMaterial,
+                asignaturaMaterial,
                 it,
                 imageMaterial
             )
