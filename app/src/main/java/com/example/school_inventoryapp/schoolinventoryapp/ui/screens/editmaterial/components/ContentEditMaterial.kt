@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -33,6 +34,10 @@ fun ContentEditMaterial(
 ) {
 
     val isLoading: Boolean by materialsInfoViewModel.isLoading.observeAsState(false)
+
+    LaunchedEffect(Unit) {
+        materialsInfoViewModel.getMaterialInfo(nombreMaterial)
+    }
 
 
     if (isLoading) {

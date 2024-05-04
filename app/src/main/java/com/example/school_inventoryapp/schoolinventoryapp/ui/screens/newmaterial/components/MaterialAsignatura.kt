@@ -4,7 +4,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Person
@@ -100,8 +103,8 @@ fun AsignaturaNewMaterial(
             expanded = expanded,
             onDismissRequest = { expanded = false },
             modifier = Modifier
-                .size(300.dp)
-                .fillMaxHeight()
+                .width(300.dp)
+                .height(200.dp)
         ) {
             asignaturas.forEach { asignatura ->
                 DropdownMenuItem(onClick = {

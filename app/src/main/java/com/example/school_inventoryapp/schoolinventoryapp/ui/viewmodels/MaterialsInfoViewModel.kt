@@ -99,6 +99,15 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
         _imageMaterial.value = imageMaterial
     }
 
+    fun cleanData() {
+        _nombreMaterial.value = ""
+        _cantidadMaterial.value = ""
+        _cursoMaterial.value = ""
+        _asignaturaMaterial.value = ""
+        _descriptionMaterial.value = ""
+        _imageMaterial.value = ""
+    }
+
 
     // Método para añadir un nuevo material.
     fun addMaterial(
@@ -163,6 +172,7 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
             _isLoading.value = false
         }
     }
+
 
 
 }
