@@ -1,5 +1,6 @@
 package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.materialslist.components
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -25,6 +26,7 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.school_inventoryapp.Routes
 import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.Material
+import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.MaterialsInfoViewModel
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.UserInfoViewModel
 
 
@@ -32,24 +34,39 @@ import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.UserInfo
 @Composable
 fun MaterialListCard(
     material: Material,
-    userInfoViewModel: UserInfoViewModel,
+    materialsInfoViewModel: MaterialsInfoViewModel,
     navigationController: NavHostController,
 ) {
     Card(
         modifier = Modifier
             .width(300.dp)
-            .height(350.dp)
+            .height(250.dp)
             .padding(vertical = 16.dp, horizontal = 20.dp)
-            .clickable { }, shape = RoundedCornerShape(8.dp), colors = CardDefaults.cardColors(containerColor = Color(0xFF358F80))
+            .clickable {
+                materialsInfoViewModel.getMaterialInfo(material.nombre)
+                navigationController.navigate(Routes.MaterialInfoScreen.route)
+            },
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF358F80))
     ) {
-        Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = material.nombre, textAlign = TextAlign.Center, fontWeight = FontWeight.Bold, modifier = Modifier.padding(vertical = 8.dp))
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = material.nombre,
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
             Image(
                 painter = rememberImagePainter(data = material.image),
                 contentDescription = null,
                 modifier = Modifier
                     .width(150.dp)
-                    .height(230.dp), contentScale = ContentScale.Crop,
+                    .height(170.dp),
+                contentScale = ContentScale.Crop,
             )
         }
 

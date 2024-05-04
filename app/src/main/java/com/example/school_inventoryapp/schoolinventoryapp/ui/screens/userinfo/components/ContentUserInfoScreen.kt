@@ -25,7 +25,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.school_inventoryapp.Routes
 import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.User
+import com.example.school_inventoryapp.schoolinventoryapp.ui.components.EditButton
 import com.example.school_inventoryapp.schoolinventoryapp.ui.components.ProgressIndicatorLogo
 import com.example.school_inventoryapp.schoolinventoryapp.ui.viewmodels.UserInfoViewModel
 
@@ -74,7 +76,8 @@ fun UserInfoContent(
                 .fillMaxWidth()
                 .height(80.dp))
             Text(text = "Ultima sesión: ${dateJoin!!}", fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            EditButton(navigationController)
+            EditButton("Edit Usuario"
+            ) { navigationController.navigate(Routes.EditUserScreen.route) }
         }
     }
 }

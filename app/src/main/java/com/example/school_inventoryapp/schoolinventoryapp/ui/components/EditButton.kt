@@ -1,5 +1,7 @@
-package com.example.school_inventoryapp.schoolinventoryapp.ui.screens.userinfo.components
+package com.example.school_inventoryapp.schoolinventoryapp.ui.components
 
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,9 +19,9 @@ import com.example.school_inventoryapp.Routes
 
 
 @Composable
-fun EditButton(navigationController: NavHostController) {
+fun EditButton( titulo: String, navegar: () -> Unit) {
     Button(
-        onClick = { navigationController.navigate(Routes.EditUserScreen.route) },
+        onClick = { navegar() },
         modifier = Modifier
             .size(400.dp, 50.dp)
             .padding(horizontal = 15.dp),
@@ -31,10 +33,12 @@ fun EditButton(navigationController: NavHostController) {
     )
     {
         Text(
-            text = "Edit Perfil",
+            text = titulo,
             fontWeight = FontWeight.ExtraBold,
             color = Color.Black,
             fontSize = 18.sp
         )
     }
 }
+
+

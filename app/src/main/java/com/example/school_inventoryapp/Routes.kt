@@ -9,5 +9,6 @@ sealed class Routes(val route: String) {
     object MaterialInfoScreen : Routes ("materialinfoscreen")
     object MaterialListScreen : Routes ("materiallistscreen")
     object NewMaterialScreen : Routes ("newmaterialscreen")
+    object EditMaterialScreen : Routes ("editmaterialscreen")
     object AppInfoScreen : Routes ("appinfoscreen")
 }

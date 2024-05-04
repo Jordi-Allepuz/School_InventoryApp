@@ -27,6 +27,11 @@ class StorageService @Inject constructor(
        return firebaseFirestore.collection("usuarios").whereEqualTo("email", email).get().await().documents.first().reference.set(userMap).isComplete
     }
 
+    suspend fun editMaterial(material: Material, nombre: String): Boolean {
+        val materialMap = materialToMap(material)
+        return firebaseFirestore.collection("materiales").whereEqualTo("nombre", nombre).get().await().documents.first().reference.set(materialMap).isComplete
+    }
+
     // Obtiene la información de un usuario por su email y retorna un objeto User
     suspend fun getInfoUser(email: String): User? {
         val result =
@@ -82,7 +87,7 @@ class StorageService @Inject constructor(
     // Obtiene la información de un libro por su nombre y retorna un objeto Book
     suspend fun getMaterialInfo(name: String): Material? {
         val result =
-            firebaseFirestore.collection("materiales").whereEqualTo("titulo", name).get().await()
+            firebaseFirestore.collection("materiales").whereEqualTo("nombre", name).get().await()
         return result.documents.firstOrNull()?.toObject<Material>()
     }
 
@@ -106,6 +111,26 @@ class StorageService @Inject constructor(
         }
         return materiales
 
+    }
+
+    //obtener materiales filtrados por asignatura
+    suspend fun getMaterialsBySubject(subject: String): MutableList<Material> {
+        val materiales = mutableListOf<Material>()
+        try {
+            val result = firebaseFirestore
+                .collection("materiales")
+                .whereEqualTo("asignatura", subject)
+                .get()
+                .await()
+
+            for (documento in result) {
+                val material = documento.toObject(Material::class.java)
+                materiales.add(material)
+            }
+        } catch (e: Exception) {
+            println("Error al obtener materiales coleccion: ${e.message}")
+        }
+        return materiales
     }
 
 

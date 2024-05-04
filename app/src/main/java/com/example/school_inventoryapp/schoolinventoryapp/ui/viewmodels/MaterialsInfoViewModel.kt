@@ -5,11 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.Material
+import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.User
 import com.example.school_inventoryapp.schoolinventoryapp.data.sources.remote.StorageService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.Math.log
 import javax.inject.Inject
 
 
@@ -46,14 +48,13 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
 
 
     // Método para obtener la información de un material específico.
-    fun getMaterialInfo(name: String, toInfo: () -> Unit) {
+    fun getMaterialInfo(name: String) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
                 storageService.getMaterialInfo(name)
             }
             if (result != null) {
                 _material.value = result
-                toInfo()
             } else {
                 //error
             }
@@ -66,6 +67,16 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
                 storageService.getMaterialsList()
+            }
+            _materialList.value = result
+        }
+    }
+
+    // Método para obtener los materiales filtrados por asignatura.
+    fun getMaterialsBySubject(subject: String) {
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) {
+                storageService.getMaterialsBySubject(subject)
             }
             _materialList.value = result
         }
@@ -96,7 +107,7 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
         cursoMateria: String,
         asignaturaMaterial: String,
         descriptionMaterial: String,
-        imageMaterial: String,
+        imageMaterial: String
     ) {
         viewModelScope.launch {
             _isLoading.value = true
@@ -115,8 +126,41 @@ class MaterialsInfoViewModel @Inject constructor(private val storageService: Sto
             if (result) {
                 //
             } else {
-                _isLoading.value = false
+                //
             }
+            _isLoading.value = false
+        }
+    }
+
+    fun updateMaterial(
+        nombre: String,
+        cantidad: String,
+        curso: String,
+        asignatura: String,
+        description: String,
+        imagen: String,
+        onSuccess: () -> Unit
+    ) {
+        viewModelScope.launch {
+            _isLoading.value = true
+            val result = withContext(Dispatchers.IO) {
+                storageService.editMaterial(
+                    Material(
+                        nombre,
+                        cantidad,
+                        curso,
+                        asignatura,
+                        description,
+                        imagen
+                    ), nombre
+                )
+            }
+            if (result != null) {
+                onSuccess()
+            } else {
+                //
+            }
+            _isLoading.value = false
         }
     }
 

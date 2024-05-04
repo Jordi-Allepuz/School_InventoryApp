@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.Material
 import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.User
 import com.example.school_inventoryapp.schoolinventoryapp.data.sources.remote.AuthService
 import com.example.school_inventoryapp.schoolinventoryapp.data.sources.remote.StorageService
@@ -79,7 +80,7 @@ class SignUpViewModel @Inject constructor(
         _isSignUpEnable.value = enableSignUp(email, password1, password2)
     }
 
-    fun cleanData(){
+    fun cleanData() {
         _userName.value = ""
         _email.value = ""
         _clase.value = ""
@@ -166,7 +167,7 @@ class SignUpViewModel @Inject constructor(
         viewModelScope.launch {
             _isLoading.value = true
             val result = withContext(Dispatchers.IO) {
-                storageService.editUser(User(userName,email,clase,centro,avatar), email)
+                storageService.editUser(User(userName, email, clase, centro, avatar), email)
             }
             if (result != null) {
                 toUserScreen()

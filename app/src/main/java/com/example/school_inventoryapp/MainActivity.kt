@@ -11,10 +11,14 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.school_inventoryapp.schoolinventoryapp.data.dataInfo.User
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.appinfo.InfoAppScreen
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.editmaterial.EditMaterialScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.newmaterial.NewMaterialScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.edituser.EditUserScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.login.LoginScreen
+import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.materialinfo.MaterialInfoScreen
+
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.materialslist.MaterialsListScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.signup.SignUpScreen
 import com.example.school_inventoryapp.schoolinventoryapp.ui.screens.userinfo.UserInfoScreen
@@ -68,9 +72,6 @@ class MainActivity : ComponentActivity() {
                                 navigationController
                             )
                         }
-                        composable(Routes.MaterialInfoScreen.route) {
-
-                        }
                         composable(Routes.MaterialListScreen.route) {
                             MaterialsListScreen(
                                 userInfoViewModel,
@@ -80,8 +81,28 @@ class MainActivity : ComponentActivity() {
                                 navigationController
                             )
                         }
+                        composable(Routes.MaterialInfoScreen.route) {
+                            MaterialInfoScreen(
+                                userInfoViewModel,
+                                materialsInfoViewModel,
+                                loginViewModel,
+                                openAppsViewModel,
+                                navigationController
+                            )
+                        }
                         composable(Routes.NewMaterialScreen.route) {
-                            NewMaterialScreen(materialsInfoViewModel, loginViewModel, navigationController)
+                            NewMaterialScreen(
+                                materialsInfoViewModel,
+                                loginViewModel,
+                                navigationController
+                            )
+                        }
+                        composable(Routes.EditMaterialScreen.route) {
+                            EditMaterialScreen(
+                                materialsInfoViewModel,
+                                loginViewModel,
+                                navigationController
+                            )
                         }
                         composable(Routes.AppInfoScreen.route) {
                             InfoAppScreen(

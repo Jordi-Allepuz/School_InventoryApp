@@ -6,6 +6,7 @@ import javax.inject.Inject
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import java.io.File
 
 class LocalDataSource @Inject constructor(@ApplicationContext private val context: Context ) {
     // Método para abrir una página web en el navegador predeterminado del dispositivo.
@@ -25,5 +26,6 @@ class LocalDataSource @Inject constructor(@ApplicationContext private val contex
         }
         context.startActivity(intent)
     }
+
 
 }

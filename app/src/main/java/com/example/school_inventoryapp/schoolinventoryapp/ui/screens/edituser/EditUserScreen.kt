@@ -25,7 +25,6 @@ fun EditUserScreen(
 
     val user: User? by userInfoViewModel.user.observeAsState()
 
-    val email: String by signUpViewModel.email.observeAsState(initial = "")
     val userName: String by signUpViewModel.userName.observeAsState(initial = user!!.nombre)
     val avatar: String by signUpViewModel.avatar.observeAsState(initial = user!!.avatar)
     val clase: String by signUpViewModel.clase.observeAsState(initial = user!!.clase)
