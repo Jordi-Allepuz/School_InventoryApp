@@ -10,6 +10,13 @@ School Inventory is an Android application designed to assist school teachers in
 The app provides a comprehensive solution to keep track of teaching aids, supplies, and equipment, ensuring that teachers always have the necessary resources available for their students. 
 With features like real-time tracking, detailed item information, and user-friendly interface, School Inventory Manager helps teachers streamline their inventory management process and focus more on teaching.
 
+## Languages and Tools
+<div>
+ <img src="https://github.com/devicons/devicon/blob/master/icons/androidstudio/androidstudio-original.svg" alt="android" width="60" height="60"/>
+  <img src="https://github.com/devicons/devicon/blob/master/icons/kotlin/kotlin-original.svg" title="kotlin" alt="kotlin" width="55" height="55"/>
+ <img src="https://github.com/devicons/devicon/blob/master/icons/firebase/firebase-plain-wordmark.svg" alt="firebase" width="60" height="60"/>
+</div>
+
 ## Features
 
 - Manage Classroom Inventory: Easily track and manage inventory of materials used in classrooms.
@@ -42,6 +49,6 @@ School Inventory Manager is the ultimate tool for teachers to efficiently manage
 
 ### Material Details View
 <p align="center">
-  <img src="" alt="details" style="width:300px; height:auto;">
+  <img src="https://github.com/Jordi-Allepuz/School_InventoryApp/blob/master/image(4).png" alt="details" style="width:300px; height:auto;">
 </p>
 
