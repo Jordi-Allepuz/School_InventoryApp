@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/Jordi-Allepuz/RestaurantesWebApp/blob/main/logo.png" alt="Main Dashboard">
+  <img src="https://github.com/Jordi-Allepuz/School_InventoryApp/blob/master/appicon.png" alt="Main Dashboard" style="width:300px; height:auto;">
 </p>
 <p align="center">
   <h1>School Inventory</h1>
@@ -31,10 +31,17 @@ School Inventory Manager is the ultimate tool for teachers to efficiently manage
 ## Screenshots
 
 ### Login Page
-![Login Page](https://github.com/Jordi-Allepuz/RestaurantesWebApp/blob/main/Screenshot%202024-06-20%20at%2017-40-49%20%C3%91am%C3%B1am%20Notes.png)
+<p align="center">
+  <img src="https://github.com/Jordi-Allepuz/School_InventoryApp/blob/master/image(6).png" alt="loginpage" style="width:300px; height:auto;">
+</p>
 
 ### Main Dashboard
-![Main Dashboard](https://github.com/Jordi-Allepuz/RestaurantesWebApp/blob/main/Screenshot%202024-06-20%20at%2017-41-16%20%C3%91am%C3%B1am%20Notes.png)
+<p align="center">
+  <img src="https://github.com/Jordi-Allepuz/School_InventoryApp/blob/master/image(1).png" alt="list" style="width:300px; height:auto;">
+</p>
 
-### Materials Details View
-![Restaurant Details](https://github.com/Jordi-Allepuz/RestaurantesWebApp/blob/main/Screenshot%202024-06-20%20at%2017-41-32%20%C3%91am%C3%B1am%20Notes.png)
+### Material Details View
+<p align="center">
+  <img src="" alt="details" style="width:300px; height:auto;">
+</p>
+
